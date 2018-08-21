@@ -108,7 +108,7 @@ while(true){
         //if(sala.reservar(new (Cliente), ind))
         cliente.id = id;
         cliente.fone = fone;
-        (sala.reservar(&cliente, ind));
+        if((sala.reservar(&cliente, ind)))
             cout << "done" << endl;
     }
     else if(op == "cancelar"){
