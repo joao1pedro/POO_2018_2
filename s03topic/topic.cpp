@@ -19,25 +19,24 @@ struct Passageiro{
 };
 
 struct Topic{
-    vector<Passageiro*> cadeiras;
+    vector<Passageiro *> cadeiras;
 
-    Topic(int qtd = 0):
-        cadeiras(qtd, nullptr)
+    Topic(int qtd = 0) : cadeiras(qtd, nullptr)
     {
     }
 
     ~Topic(){
-        for(Passageiro * pass : cadeiras)
-            delete(pass);
+        for (Passageiro *pass : cadeiras)
+            delete (pass);
     }
 
-    bool inPass(Passageiro * passageiro) {
-        for(int i = 0; i < (int) cadeiras.size(); i++){
-            if(cadeiras[i] == nullptr){
+    bool inPass(Passageiro *passageiro){
+        for (int i = 0; i < (int)cadeiras.size(); i++){
+            if (cadeiras[i] == nullptr){
                 cadeiras[i] = passageiro;
                 return true;
             }
-            else if(cadeiras[i]->id == passageiro->id){
+            else if (cadeiras[i]->id == passageiro->id){
                 cout << "fail: o passageiro ja esta na topic" << endl;
                 return false;
             }
@@ -46,8 +45,12 @@ struct Topic{
     }
 
     bool outPass(string idPass){
-        for(int i =0; i< (int) cadeiras.size(); i++){
-            if(idPass == cadeiras[i]->id){
+        for (int i = 0; i < (int)cadeiras.size(); i++){
+            if (cadeiras[i] == nullptr){
+                cout << "fail: " << idPass << " nao esta na topic" << endl;
+                return false;
+            }
+            else if (idPass == cadeiras[i]->id){
                 cadeiras[i] = nullptr;
                 return true;
             }
@@ -55,12 +58,18 @@ struct Topic{
         return false;
     }
 
-    string toString(){
+    string toString(int qtdPref){
         stringstream ss;
+        int aux = qtdPref;
         ss << "[ ";
-        for(Passageiro * passageiro : cadeiras){
-            if(passageiro != nullptr)
+        for (Passageiro *passageiro : cadeiras){
+            if (passageiro != nullptr)
                 ss << passageiro->toString() << " ";
+            for (int i = 0; i < qtdPref; i++){
+                if (aux > 0)
+                    ss << "@" << "  ";
+                aux--;
+            }
             ss << "-" << "  ";
         }
         ss << "]";
@@ -71,27 +80,27 @@ struct Topic{
 int main(){
     Topic topic;
     string op;
-    while(true){
+    int qtdPref = 0;
+    while (true){
         cin >> op;
-        if(op == "show"){
-            cout << topic.toString() << endl;
-        }
-        else if(op == "new"){
+        if (op == "show")
+            cout << topic.toString(qtdPref) << endl;
+        else if (op == "new"){
             int qtd;
-            cin >> qtd;
+            cin >> qtd >> qtdPref;
             topic = Topic(qtd);
-            cout << "Topic criada com " << qtd << " cadeiras" << endl;
+            cout << "Topic criada com " << qtd << " cadeiras e " << qtdPref << " cadeiras preferenciais" << endl;
         }
-        else if(op == "in"){
+        else if (op == "in"){
             string id, idade;
             cin >> id >> idade;
-            if(topic.inPass(new Passageiro(id, idade)))
+            if (topic.inPass(new Passageiro(id, idade)))
                 cout << "done" << endl;
         }
-        else if(op == "out"){
+        else if (op == "out"){
             string idPass;
             cin >> idPass;
-            if(topic.outPass(idPass))
+            if (topic.outPass(idPass))
                 cout << "done" << endl;
         }
     }
