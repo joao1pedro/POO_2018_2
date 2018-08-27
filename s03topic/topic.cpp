@@ -30,18 +30,25 @@ struct Topic{
             delete (pass);
     }
 
-    bool inPass(Passageiro *passageiro){
-        for (int i = 0; i < (int)cadeiras.size(); i++){
-            if (cadeiras[i] == nullptr){
-                cadeiras[i] = passageiro;
-                return true;
-            }
-            else if (cadeiras[i]->id == passageiro->id){
-                cout << "fail: o passageiro ja esta na topic" << endl;
+    bool inPass(Passageiro *passageiro, int ind){
+        int qtd = cadeiras.size();
+        if((ind < 0) || (ind >= qtd)){
+            cout << "fail: topic lotada" << endl;
+            return false;
+        } 
+        if(cadeiras[ind] != nullptr){ 
+            cout << "fail: essa cadeira ja esta ocupada" << endl; 
+            return false;
+        }
+        for(int i = 0; i < (int) cadeiras.size(); i++){
+            if((cadeiras[i] != nullptr) && (cadeiras[i]->id == passageiro->id)){
+                cout << "fail: voce ja esta na topic" << endl;
                 return false;
             }
         }
-        return false;
+        cadeiras[ind] = passageiro;
+        return true;
+        
     }
 
     bool outPass(string idPass){
@@ -58,19 +65,15 @@ struct Topic{
         return false;
     }
 
-    string toString(int qtdPref){
+    string toString(){
         stringstream ss;
-        int aux = qtdPref;
         ss << "[ ";
-        for (Passageiro *passageiro : cadeiras){
-            if (passageiro != nullptr)
+        for(Passageiro* passageiro : cadeiras){
+            if(passageiro != nullptr)
                 ss << passageiro->toString() << " ";
-            for (int i = 0; i < qtdPref; i++){
-                if (aux > 0)
-                    ss << "@" << "  ";
-                aux--;
+            else{
+                ss << "-" << "  ";
             }
-            ss << "-" << "  ";
         }
         ss << "]";
         return ss.str();
@@ -79,20 +82,20 @@ struct Topic{
 
 struct Controller{
     Topic topic;
+    int ind = 0;
 
     string shell(string line){
         stringstream ui(line);
         stringstream out;
         string op;
         ui >> op;
-        int qtdPref = 0;
+        int qtdPref = 0, qtd;
 
         if(op == "help")
             out << "new _ _; show; in _; out _";
         else if (op == "show")
-            out << topic.toString(qtdPref);
+            out << topic.toString();
         else if (op == "new"){
-            int qtd;
             ui >> qtd >> qtdPref;
             topic = Topic(qtd);
             out << "Topic criada com " << qtd << " cadeiras e " << qtdPref << " cadeiras preferenciais";
@@ -100,8 +103,10 @@ struct Controller{
         else if (op == "in"){
             string id, idade;
             ui >> id >> idade;
-            if (topic.inPass(new Passageiro(id, idade)))
+            if (topic.inPass(new Passageiro(id, idade), ind)){
+                ind++;
                 out << "done";
+            }
         }
         else if (op == "out"){
             string idPass;

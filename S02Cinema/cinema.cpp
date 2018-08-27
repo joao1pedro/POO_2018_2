@@ -67,8 +67,13 @@ struct Sala{
     string toString(){
         stringstream ss;
         ss << "[ ";
-        for(Cliente* cliente : cadeiras)
-            ss << cliente->toString() << " ";
+        for(Cliente* cliente : cadeiras){
+            if(cliente != nullptr)
+                ss << cliente->toString() << " ";
+            else{
+                ss << "-" << "  ";
+            }
+        }
         ss << "]";
         return ss.str();
     }
