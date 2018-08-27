@@ -77,31 +77,55 @@ struct Topic{
     }
 };
 
-int main(){
+struct Controller{
     Topic topic;
-    string op;
-    int qtdPref = 0;
-    while (true){
-        cin >> op;
-        if (op == "show")
-            cout << topic.toString(qtdPref) << endl;
+
+    string shell(string line){
+        stringstream ui(line);
+        stringstream out;
+        string op;
+        ui >> op;
+        int qtdPref = 0;
+
+        if(op == "help")
+            out << "new _ _; show; in _; out _";
+        else if (op == "show")
+            out << topic.toString(qtdPref);
         else if (op == "new"){
             int qtd;
-            cin >> qtd >> qtdPref;
+            ui >> qtd >> qtdPref;
             topic = Topic(qtd);
-            cout << "Topic criada com " << qtd << " cadeiras e " << qtdPref << " cadeiras preferenciais" << endl;
+            out << "Topic criada com " << qtd << " cadeiras e " << qtdPref << " cadeiras preferenciais";
         }
         else if (op == "in"){
             string id, idade;
-            cin >> id >> idade;
+            ui >> id >> idade;
             if (topic.inPass(new Passageiro(id, idade)))
-                cout << "done" << endl;
+                out << "done";
         }
         else if (op == "out"){
             string idPass;
-            cin >> idPass;
+            ui >> idPass;
             if (topic.outPass(idPass))
-                cout << "done" << endl;
+                out << "done";
+        }
+        return out.str();
+    }
+
+    void io(){
+        string line;
+        while(true){
+            getline(cin, line);
+            if(line == "end")
+                return;
+            //cout << line << endl;
+            cout << "  " << shell(line) << endl;
         }
     }
+};
+
+int main(){
+    Controller c;
+    c.io();
+    return 0;
 }
