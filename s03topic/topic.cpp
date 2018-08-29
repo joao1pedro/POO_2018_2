@@ -19,6 +19,7 @@ struct Passageiro{
 };
 
 struct Topic{
+    int qtdPref;
     vector<Passageiro *> cadeiras;
 
     Topic(int qtd = 0) : cadeiras(qtd, nullptr)
@@ -72,6 +73,10 @@ struct Topic{
             if(passageiro != nullptr)
                 ss << passageiro->toString() << " ";
             else{
+                if(qtdPref > 0){
+                    ss << "@" << "  ";
+                    qtdPref--;
+                }
                 ss << "-" << "  ";
             }
         }
@@ -98,6 +103,7 @@ struct Controller{
         else if (op == "new"){
             ui >> qtd >> qtdPref;
             topic = Topic(qtd);
+            topic.qtdPref = qtdPref;
             out << "Topic criada com " << qtd << " cadeiras e " << qtdPref << " cadeiras preferenciais";
         }
         else if (op == "in"){
