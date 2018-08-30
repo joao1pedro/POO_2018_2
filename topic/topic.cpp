@@ -31,9 +31,18 @@ struct Topic{
             delete (pass);
     }
 
-    bool inPass(Passageiro *passageiro, int ind){
+    bool inPass(Passageiro *passageiro, int ind, string idade){
         int qtd = cadeiras.size();
-        if((ind < 0) || (ind >= qtd)){
+        int idadeInt;
+        idadeInt = stoi(passageiro->idade);
+
+        if(idadeInt >= 60){
+            for(int i = 0; i < qtdPref; i++){
+                if(cadeiras[i] == nullptr)
+                    cadeiras[i] = passageiro;
+            }
+        }
+        if(ind >= qtd){
             cout << "fail: topic lotada" << endl;
             return false;
         } 
@@ -69,20 +78,14 @@ struct Topic{
     string toString(){
         stringstream ss;
         ss << "[ ";
-        for(Passageiro* passageiro : cadeiras){
-            if(passageiro != nullptr)
-                ss << passageiro->toString() << " ";
-            else{
-                if(qtdPref > 0){
-                    ss << "@" << "  ";
-                    qtdPref--;
-                }
-                ss << "-" << "  ";
-            }
+        for(int i = 0; i < (int) cadeiras.size(); i++){
+            ss << (i < qtdPref ? '@' : '=');
+            ss << (cadeiras[i] != nullptr ? cadeiras[i]->toString() : " ");
+            ss << "  ";
         }
         ss << "]";
         return ss.str();
-    }
+        }
 };
 
 struct Controller{
@@ -109,7 +112,7 @@ struct Controller{
         else if (op == "in"){
             string id, idade;
             ui >> id >> idade;
-            if (topic.inPass(new Passageiro(id, idade), ind)){
+            if (topic.inPass(new Passageiro(id, idade), ind, idade)){
                 ind++;
                 out << "done";
             }
