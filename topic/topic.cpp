@@ -5,9 +5,9 @@ using namespace std;
 
 struct Passageiro{
     string id;
-    string idade;
+    int idade;
 
-    Passageiro(string id = "fulano", string idade = "0"){
+    Passageiro(string id = "fulano", int idade = 0){
         this->id = id;
         this->idade = idade;
     }
@@ -31,46 +31,46 @@ struct Topic{
             delete (pass);
     }
 
-    bool inPass(Passageiro *passageiro, int ind, string idade){
+    bool inPass(string id, int idade){
         int qtd = cadeiras.size();
-        int idadeInt;
-        idadeInt = stoi(passageiro->idade);
+        int ind;
 
-        if(idadeInt >= 60){
+        for(int i = 0; i < (int) cadeiras.size(); i++){
+                if((cadeiras[i] != nullptr) && (cadeiras[i]->id == id)){
+                    cout << "fail: voce ja esta na topic" << endl;
+                    return false;
+                }
+            }
+        if(idade >= 60){
             for(int i = 0; i < qtdPref; i++){
                 if(cadeiras[i] == nullptr)
-                    cadeiras[i] = passageiro;
+                    ind = i; 
             }
+            cadeiras[ind] = new Passageiro(id, idade);
+            return true;
         }
-        if(ind >= qtd){
-            cout << "fail: topic lotada" << endl;
-            return false;
-        } 
-        if(cadeiras[ind] != nullptr){ 
-            cout << "fail: essa cadeira ja esta ocupada" << endl; 
-            return false;
-        }
-        for(int i = 0; i < (int) cadeiras.size(); i++){
-            if((cadeiras[i] != nullptr) && (cadeiras[i]->id == passageiro->id)){
-                cout << "fail: voce ja esta na topic" << endl;
-                return false;
+        else if(idade < 60){
+            for(int i = qtd; i >= qtdPref; i--){
+                if(cadeiras[i] == nullptr)
+                    ind = i; 
             }
+            cadeiras[ind] = new Passageiro(id, idade);
+            return true;
         }
-        cadeiras[ind] = passageiro;
-        return true;
+        return false;
         
     }
 
     bool outPass(string idPass){
         for (int i = 0; i < (int)cadeiras.size(); i++){
-            if (cadeiras[i] == nullptr){
-                cout << "fail: " << idPass << " nao esta na topic" << endl;
-                return false;
-            }
-            else if (idPass == cadeiras[i]->id){
+            if (cadeiras[i] != nullptr && cadeiras[i]->id == idPass){
                 delete(cadeiras[i]);
                 cadeiras[i] = nullptr;
                 return true;
+            }
+            else{
+               cout << "fail: " << idPass << " nao esta na topic" << endl;
+                return false; 
             }
         }
         return false;
@@ -111,10 +111,10 @@ struct Controller{
             out << "Topic criada com " << qtd << " cadeiras e " << qtdPref << " cadeiras preferenciais";
         }
         else if (op == "in"){
-            string id, idade;
+            string id;
+            int idade;
             ui >> id >> idade;
-            if (topic.inPass(new Passageiro(id, idade), ind, idade)){
-                ind++;
+            if (topic.inPass(id, idade)){
                 out << "done";
             }
         }
@@ -123,6 +123,9 @@ struct Controller{
             ui >> idPass;
             if (topic.outPass(idPass))
                 out << "done";
+        }
+        else if (op == "clear"){
+            system("clear");
         }
         return out.str();
     }
