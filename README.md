@@ -24,7 +24,7 @@ O objetivo desta prática é criar uma Classe denominada **Carro** que funcione 
 
  - O tempo de desenvolvimento foi de aproximadamente 2 horas e meia.
 
- # Topic - João Pedro Oliveira Santiago
+ # Topic 02 - 
 
 O objetivo desta prática é simular a alocação de uma topic, cuja apresenta *n* cadeiras e *m* cadeiras preferenciais. De modo que quando algum passageiro entre na topic, se ele tiver idade de 60 anos ou mais ele é prioridade e portanto deve ser alocado em cadeiras preferenciais, essas cadeiras preferenciais são as cadeiras mais a frente do veiculo. (Por ora atividade não finalizada).
 
@@ -41,7 +41,7 @@ O objetivo desta prática é simular a alocação de uma topic, cuja apresenta *
   - Métodos de entrada/saida e shell(tradutor).
   
 - O que você ainda tem dificuldade?
-  - Tive dificuldades em criar a função de cancelar, pois em muitas tentativas feitas a mesma apresentou bugs. Portanto, ela não está funcional.
+  - Tive dificuldades em criar a função de sair(**out**), pois em muitas tentativas feitas a mesma apresentou bugs. Portanto, ela não está funcional.
   
 
 - Quanto tempo levou para fazer a atividade?
