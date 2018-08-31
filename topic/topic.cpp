@@ -68,6 +68,7 @@ struct Topic{
                 return false;
             }
             else if (idPass == cadeiras[i]->id){
+                delete(cadeiras[i]);
                 cadeiras[i] = nullptr;
                 return true;
             }
@@ -85,6 +86,22 @@ struct Topic{
         }
         ss << "]";
         return ss.str();
+        }
+
+        int findPref(){
+            for (int i = 0; i < (int)cadeiras.size(); i++){
+                if (cadeiras[i] == nullptr && i <= qtdPref){
+                    return i;
+                }
+            }
+        }
+
+        int findComum(){
+            for (int i = 0; i < (int)cadeiras.size(); i++){
+                if (cadeiras[i] == nullptr && i > qtdPref){
+                    return i;
+                }
+            }
         }
 };
 
