@@ -1,6 +1,7 @@
 # 01 Carro -
 
 O objetivo desta prática é criar uma Classe denominada **Carro** que funcione como um carro. Ou seja, **carro** deve permitir a entrada e/ou saída de passageiros, abastecer e por fim andar desde que haja combustível suficiente para completar a viagem e haja alguma pessoa dentro do carro.
+  - Atividade feita individualmente.
 
 - Como foi feito:
 
@@ -27,6 +28,7 @@ O objetivo desta prática é criar uma Classe denominada **Carro** que funcione 
  # Topic 02 - 
 
 O objetivo desta prática é simular a alocação de uma topic, cuja apresenta *n* cadeiras e *m* cadeiras preferenciais. De modo que quando algum passageiro entre na topic, se ele tiver idade de 60 anos ou mais ele é prioridade e portanto deve ser alocado em cadeiras preferenciais, essas cadeiras preferenciais são as cadeiras mais a frente do veiculo. (Por ora atividade não finalizada).
+  - Atividade feita individualmente.
 
 - Como foi feito:
   - Foram necessárias a criação de três classes, são elas: **Topic, Passageiroc e Controller**.
