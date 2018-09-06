@@ -49,6 +49,24 @@ O objetivo desta prática é simular a alocação de uma topic, cuja apresenta *
 - Quanto tempo levou para fazer a atividade?
   - Por volta de 6 a 7 horas, considerando o tempo que tentei fazer a função cuja tive dificuldades de maneiras diferente.
 
+# Contato
+
+O objetivo desta prática é fazer um objeto contato telefonico, cuja, este possui um nome, um telefone, e este telefone possui um *label(identificador)*.
+Pratica feita individualmente.
+
+- Como foi feito:
+  - Foram criadas três classes, a padrão de **Controller** e uma de **Contato** e outra de **Fone**. A classe Contato possui um vector de Fones. **Fone** deve validar os telefones inseridos, permitindo apenas os seguintes caracteres : {0123456789().}. E é necessário métodos para adicionar números nos contatos, assim como remover dado um id(id correspondente ao label do telefone que deseja-se remover).
+
+- O que você aprendeu?
+  - Aprendi o que é, e o porque utilizar algum método **static**.
+  - Como utilizar string::find e string::npos para procurar caracteres.
+
+- O que você ainda tem dificuldade?
+  - Nessa atividade o ponto chave e maior questinonamento foi como implementar a função de validar um fone. Então durante o desenvolvimento fiz algumas pesquisas aos sites StackOverflow e learncpp e encontrei a possibilidade de utilizar find e npos para procurar caracteres.
+
+- Quanto tempo levou para realizar a atividade?
+  - De três a três horas e meia.
+
 
   
   
