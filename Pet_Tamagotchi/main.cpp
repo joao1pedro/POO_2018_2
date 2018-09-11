@@ -4,31 +4,8 @@
 using namespace std;
 
 int main(){
-   Pet p("Bixanuh", 15, 10, 300);
-    p.play();
-    cout << p.toString() << endl;
-    p.play();
-    cout << p.toString() << endl;
-    p.play();
-    cout << p.toString() << endl;
-    p.cleanPet();
-    cout << p.toString() << endl;
-    p.eatPet();
-    cout << p.toString() << endl;
-    p.play();
-    p.play();
-    p.play();
-    p.play();
-    p.play();
-    p.play();
-    p.play();
-    p.play();
-    p.play();
-    p.play();
-    p.play();
-    p.play();
-    p.play();
-    p.play();
+    Controller c;
+    c.io();
   
     return 0;
 }
