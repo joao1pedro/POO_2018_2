@@ -67,6 +67,22 @@ Pratica feita individualmente.
 - Quanto tempo levou para realizar a atividade?
   - De três a três horas e meia.
 
+# Pet - Tamagotchi
+
+O objetivo desta prática é fazer jogo conhecido como *Tamagotchi* onde o jogador cuida de seu bichinho *(pet)*, brincando, banhando, dando comida e dando banho. Nosso **pet** deve possuir um nome, e seu nome deve ter uma opção de ser atualizado caso desejado.
+
+- Como foi feito:
+  - Foi criada uma classe denominada **Pet** cuja foi inicializada com seus *default* construtores e a mesma é responsável pelos métodos capazes de manipular os status do pet. Para manipular os status do pet, foram utilizados métodos **set**.
+
+- O que você aprendeu?
+  - Aprendi o que são métodos **get** e **set** e onde utiliza-los.
+
+- O que você ainda tem dificuldade?
+  - Nessa atividade não tive dificuldades em realiza-la.
+
+- Quanto tempo levou para realizar a atividade?
+  - Em torno de três horas.
+
 
   
   

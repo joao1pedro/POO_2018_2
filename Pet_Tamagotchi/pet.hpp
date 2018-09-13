@@ -43,21 +43,22 @@ public:
         return ss.str();
     }
 
+    bool testAlive(){
+        if(alive)
+            return true;
+        cout << "fail: pet esta morto" << endl;
+        return false;
+    }
+
     void setEnergy(int value){
         if(value <= 0){
             this->alive = false;
             value = 0;
         }else if(value > energyMax){
             value = energyMax;
-        }else
+        }else{
             energy = value;
-    }
-
-    bool testAlive(){
-        if(alive)
-            return true;
-        cout << "fail: pet esta morto" << endl;
-        return false;
+        } 
     }
 
     void setHungry(int value){
@@ -66,8 +67,9 @@ public:
             value = 0;
         }else if(value > hungryMax){
             value = hungryMax;
-        }else
+        }else {
             hungry = value;
+        }
     }
 
     void setClean(int value){
@@ -76,8 +78,9 @@ public:
             value = 0;
         }else if(value > cleanMax){
             value = cleanMax;
-        }else
+        }else{
             clean = value;
+        }
     }
 
     void setAge(int value){
