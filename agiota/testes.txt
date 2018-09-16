@@ -1,0 +1,19 @@
+help
+init 500
+addCli jose jose mane
+addCli maria maria jose
+addTr jose 120
+addTr maria 50
+addTr jose 130
+showCli
+addCli carlos carlos jesse
+addTr carlos 25
+showTr
+addCli jefersson zuzu
+addTr jefersson 10
+show jose
+pay maria 80
+pay maria 50
+kill jose
+showCli
+consult
