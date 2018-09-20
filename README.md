@@ -82,6 +82,22 @@ O objetivo desta prática é fazer jogo conhecido como *Tamagotchi* onde o jogad
 
 - Quanto tempo levou para realizar a atividade?
   - Em torno de três horas.
+  
+# Agiota
+
+O objetivo desta prática é criar um programa que gerencie clientes de um agiota. Trabalho feito individualmente.
+
+- Como foi feito: 
+  - Foram criadas três classes, são elas: **Cliente, Movimentacao e Agiota**. Um agiota deve ser capaz de: possutir um capital cujo poderá emprestar, adicionar clientes, fazer emprestimos para clientes, receber pagamentos de clientes, e caso perder a paciencia com algum cliente devedor, mata-lo.
+  
+- O que você aprendeu?
+  - Nesta prática foi necessário utilizar alguns conceitos já adquiridos anteriormente por meio de outras aulas/atividades. São estes conceitos: apagar um indice i desejado de um vector. Utilizar um vector de modo a guardar um "histórico" de dados. E ter a possibilidade de possuir mais de um cliente, diferentemente do que acontecia na atividade contato por exemplo, pois para contato tinhamos que gerenciar apenar um "cliente/contato" e para o agiota necessitamos trabalhar com vários clientes.
+
+- O que você ainda tem dificuldade?
+  - Tive um pouco de dificuldade para implementar a função de pay(pagamento) cuja tinha que encontrar o cliente corretor que fez o pagamento para por fim atualizar o valor da divida do cliente.
+
+- Quanto tempo levou para realizar a atividade?
+  - Por volta de quatro horas.
 
 
   
