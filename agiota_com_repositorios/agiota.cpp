@@ -21,22 +21,19 @@ struct Cliente{
         ss << this->keyID << ":" << this->id << ":" << this->saldo;
         return ss.str();
     }
-
-    bool testAlive(){
-        if(alive)
-            return true;
-        cout << "fail: cliente esta morto" << endl;
-        return false;
-    }
-    
 };
 
 struct Movimentacao{
+    int indice;
     string key;
     float value;
     Movimentacao(string key = "", float value = 0):
         key(key), value(value)
     {
+    }
+
+    string toString(){
+        return "id:" + to_string(indice) + " [" + key + " " + to_string(value) + "]";
     }
 };
 
@@ -64,15 +61,6 @@ struct Agiota{
         return ss.str();
     }
 
-    bool testAddTr(float value){
-        if(value > saldoAmigo){
-            cout << "fail: saldo do agiota eh insuficiente" << endl;
-            return false;
-        }
-        else
-            return true;
-    }
-
      string toString_transferencias(){
         stringstream ss;
         for(int i = 0; i < (int) mov.size(); i++)
@@ -89,23 +77,47 @@ struct Agiota{
         return ss.str();
     }
 
-    bool pay(string key, float value){
+   void emprestimo(string key, float value){
+            if(value > saldoAmigo){
+            throw "fail: saldo do agiota eh insuficiente";
+        }
+        for(int i = 0; i < (int) clientes.size(); i++){
+            if(clientes[i].keyID == key){
+                clientes[i].saldo = clientes[i].saldo+value;
+                saldoAmigo = saldoAmigo-value;
+                mov.push_back(Movimentacao(key, value));
+            }
+        }
+        throw "fail: cliente nao existe";
+    }
+
+    void pay(string key, float value){
         for(int i = 0; i < (int) clientes.size(); i++){
             if(clientes[i].keyID == key){
                 if(value > clientes[i].saldo){
-                    cout << "fail: pagamento maior que a divida nao eh aceitavel" << endl;
-                    return false;
+                    throw "fail: pagamento maior que a divida nao eh aceitavel";
                 }
                 else{
                     clientes[i].saldo = clientes[i].saldo+value;
                     mov.push_back(Movimentacao(key, value));
                     saldoAmigo = saldoAmigo+value;
-                    return true;
                 }
             }
         }
-        cout << "fail: devedor nao existe" << endl;
-        return false;
+        throw "fail: devedor nao existe";
+    }
+
+    void kill(string key){
+        for(int i = 0; i < (int) clientes.size(); i++){
+            if(clientes[i].keyID == key){
+                clientes.erase(clientes.begin() + i);
+                for(int j = 0; j < (int) mov.size(); j++){
+                    if(mov[j].key == key)
+                        mov.erase(mov.begin() + j);
+                }
+                cout << "success: " << key << " foi morto";
+            }
+        }
     }
 
 };
@@ -157,6 +169,14 @@ struct Repositorio{
             vp.push_back(par.first);
         return vp;
     }
+
+    string showAll(){
+        stringstream ss;
+        for(auto it : data){
+            ss << "  " <<  it.second.toString() << endl;
+        }
+        return ss.str();
+}
     
 };
 
@@ -177,8 +197,9 @@ struct Controller{
                     out << "showCli; showTr; show _cliChave; addCli _cliChave _nomeCliente; addTr _cliChave _value; kill _cliChave; consult;clear;";
                 }
                 else if(op == "showCli"){
-                    for(auto& cli : rcli.getValues())
-                    out << cli.toString();
+                    //for(auto& cli : rcli.getValues())
+                    //out << cli.toString();
+                    out << rcli.showAll();
                 }
                 else if(op == "init"){
                     float value;
@@ -197,13 +218,12 @@ struct Controller{
                     float value;
                     ui >> key >> value;
                     
-                    if(a.testAddTr(value))
-                        rmov.add(key, Movimentacao(key, value));
+                    rmov.add(key, Movimentacao(key, value));
                 }
                 else if(op == "showTr"){
                     string key;
                     ui >> key;
-                    out << a.toString_transferencias();
+                    out << rmov.showAll();
                 }
                 else if(op == "show"){
                     string key;
@@ -222,8 +242,8 @@ struct Controller{
                     string key;
                     float value;
                     ui >> key >> value;
-                    if(a.pay(key, value))
-                        out << "success";
+                    a.pay(key, value);
+                    out << "success";
                 }
                 else if(op == "clear"){
                     system("clear");
