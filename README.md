@@ -49,7 +49,7 @@ O objetivo desta prática é simular a alocação de uma topic, cuja apresenta *
 - Quanto tempo levou para fazer a atividade?
   - Por volta de 6 a 7 horas, considerando o tempo que tentei fazer a função cuja tive dificuldades de maneiras diferente.
 
-# Contato
+# Contato - 03
 
 O objetivo desta prática é fazer um objeto contato telefonico, cuja, este possui um nome, um telefone, e este telefone possui um *label(identificador)*.
 Pratica feita individualmente.
@@ -67,7 +67,7 @@ Pratica feita individualmente.
 - Quanto tempo levou para realizar a atividade?
   - De três a três horas e meia.
 
-# Pet - Tamagotchi
+# Pet - Tamagotchi - 04
 
 O objetivo desta prática é fazer jogo conhecido como *Tamagotchi* onde o jogador cuida de seu bichinho *(pet)*, brincando, banhando, dando comida e dando banho. Nosso **pet** deve possuir um nome, e seu nome deve ter uma opção de ser atualizado caso desejado.
 
@@ -83,7 +83,7 @@ O objetivo desta prática é fazer jogo conhecido como *Tamagotchi* onde o jogad
 - Quanto tempo levou para realizar a atividade?
   - Em torno de três horas.
   
-# Agiota
+# Agiota - 05
 
 O objetivo desta prática é criar um programa que gerencie clientes de um agiota. Trabalho feito individualmente.
 
@@ -99,9 +99,9 @@ O objetivo desta prática é criar um programa que gerencie clientes de um agiot
 - Quanto tempo levou para realizar a atividade?
   - Por volta de quatro horas.
 
-# Agiota com repositorios
+# Agiota com repositorios - 06
 
-# Repositório I
+# Repositório I - 07
 
 O objetivo dessa atividade é implementar um repositório por meio de **templates** capaz de adicionar, remover, mostrar objetos das classes **professor, aluno, disciplinas**, de modo que, apenas a implementação de um métodos genéricos com base em respositórios permita essa implementação.
 
