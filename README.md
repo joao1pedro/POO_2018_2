@@ -99,6 +99,21 @@ O objetivo desta prática é criar um programa que gerencie clientes de um agiot
 - Quanto tempo levou para realizar a atividade?
   - Por volta de quatro horas.
 
+# Agiota com repositorios
 
-  
-  
+# Repositório I
+
+O objetivo dessa atividade é implementar um repositório por meio de **templates** capaz de adicionar, remover, mostrar objetos das classes **professor, aluno, disciplinas**, de modo que, apenas a implementação de um métodos genéricos com base em respositórios permita essa implementação.
+
+- Como foi feito:
+  - Foram criadas classes **professor, aluno, disciplina** cuja cada uma era constituida apenas de seus respectivos métodos contrutores e toString.
+  - Além destas três classes, foi criada uma classe chamada repositório, qual tem os métodos de adicionar, remover, mostrar, obter elementos passados por meio de templates. Deste modo, permitindo uso deste template para qualquer uma das três classes vista acima.
+
+- O que você aprendeu?
+  - A utilização de templates e mapas.
+
+- O que você ainda tem dificuldade?
+  - Nesta atividade não tive dificuldades.
+
+- Quanto tempo levou para realizar a atividade?
+  - Um total próximo a quatro horas.
