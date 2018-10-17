@@ -25,6 +25,28 @@ public:
         this->nome = nome;
         this->classe = classe;
     }
+
+    float calcSalario(char classe){
+        float value;
+        if(classe == 'A'){
+            value = 3000;
+        }
+        else if(classe == 'B'){
+            value = 5000;
+        }
+        else if(classe == 'C'){
+            value = 7000;
+        }
+        else if(classe == 'D'){
+            value = 9000;
+        }
+        else if(classe == 'E'){
+            value = 11000;
+        }else{
+            throw "classe invalida";
+        }
+        return value;
+    }
 };
 
 class STA : public Funcionario{
@@ -34,6 +56,12 @@ public:
     STA(string nome, int nivel){
         this->nome = nome;
         this->nivel = nivel;
+    }
+
+    float calcSalario(int nivel){
+        float salario;
+        salario = (3000 + (300*nivel));
+        return salario;
     }
 };
 
@@ -46,6 +74,14 @@ public:
         this->nome = nome;
         this->horasTrab = horasTrab;
         this->insalubre = insalubre;   
+    }
+
+    float calcSalario(int horasTrab, bool insalubre){
+        float salario;
+        if(insalubre)
+            salario = ((4*horasTrab)+500);
+        salario = 4*horasTrab;
+        return salario;
     }
 };
 
@@ -106,10 +142,10 @@ public:
     string shell(string line){
         stringstream ui(line);
         stringstream out;
-        string op;
-        ui >> op;
+        string classe;
+        ui >> classe;
 
-        if(op == "help"){
+        if(classe == "help"){
             out << "addProf _nome _classe;\n"
                 << "addSTA _nome _classe;\n"
                 << "addTer _nome _horasTrab _salubridade;\n"
