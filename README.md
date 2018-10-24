@@ -1,7 +1,9 @@
 # 01 Carro -
 
 O objetivo desta prática é criar uma Classe denominada **Carro** que funcione como um carro. Ou seja, **carro** deve permitir a entrada e/ou saída de passageiros, abastecer e por fim andar desde que haja combustível suficiente para completar a viagem e haja alguma pessoa dentro do carro.
-  - Atividade feita individualmente.
+
+- Com quem você fez?
+  - Trabalho feito individualmente.
 
 - Como foi feito:
 
@@ -27,8 +29,10 @@ O objetivo desta prática é criar uma Classe denominada **Carro** que funcione 
 
  # Topic 02 - 
 
-O objetivo desta prática é simular a alocação de uma topic, cuja apresenta *n* cadeiras e *m* cadeiras preferenciais. De modo que quando algum passageiro entre na topic, se ele tiver idade de 60 anos ou mais ele é prioridade e portanto deve ser alocado em cadeiras preferenciais, essas cadeiras preferenciais são as cadeiras mais a frente do veiculo. (Por ora atividade não finalizada).
-  - Atividade feita individualmente.
+O objetivo desta prática é simular a alocação de uma topic, cuja apresenta *n* cadeiras e *m* cadeiras preferenciais. De modo que quando algum passageiro entre na topic, se ele tiver idade de 60 anos ou mais ele é prioridade e portanto deve ser alocado em cadeiras preferenciais, essas cadeiras preferenciais são as cadeiras mais a frente do veiculo. Método de inserir passageiros foi refeito pois a versão anterior alocava os passageiros erroneamente.
+
+- Com quem você fez?
+  - Trabalho feito individualmente.
 
 - Como foi feito:
   - Foram necessárias a criação de três classes, são elas: **Topic, Passageiroc e Controller**.
@@ -43,7 +47,7 @@ O objetivo desta prática é simular a alocação de uma topic, cuja apresenta *
   - Métodos de entrada/saida e shell(tradutor).
   
 - O que você ainda tem dificuldade?
-  - Tive dificuldades em criar a função de sair(**out**), pois em muitas tentativas feitas a mesma apresentou bugs. Portanto, ela não está funcional.
+  - Tive dificuldades em criar a função de sair(**out**), pois em muitas tentativas feitas a mesma apresentou bugs.
   
 
 - Quanto tempo levou para fazer a atividade?
@@ -52,7 +56,9 @@ O objetivo desta prática é simular a alocação de uma topic, cuja apresenta *
 # Contato - 03
 
 O objetivo desta prática é fazer um objeto contato telefonico, cuja, este possui um nome, um telefone, e este telefone possui um *label(identificador)*.
-Pratica feita individualmente.
+
+- Com quem você fez?
+  - Trabalho feito individualmente.
 
 - Como foi feito:
   - Foram criadas três classes, a padrão de **Controller** e uma de **Contato** e outra de **Fone**. A classe Contato possui um vector de Fones. **Fone** deve validar os telefones inseridos, permitindo apenas os seguintes caracteres : {0123456789().}. E é necessário métodos para adicionar números nos contatos, assim como remover dado um id(id correspondente ao label do telefone que deseja-se remover).
@@ -71,6 +77,9 @@ Pratica feita individualmente.
 
 O objetivo desta prática é fazer jogo conhecido como *Tamagotchi* onde o jogador cuida de seu bichinho *(pet)*, brincando, banhando, dando comida e dando banho. Nosso **pet** deve possuir um nome, e seu nome deve ter uma opção de ser atualizado caso desejado.
 
+- Com quem você fez?
+  - Trabalho feito individualmente.
+
 - Como foi feito:
   - Foi criada uma classe denominada **Pet** cuja foi inicializada com seus *default* construtores e a mesma é responsável pelos métodos capazes de manipular os status do pet. Para manipular os status do pet, foram utilizados métodos **set**.
 
@@ -85,7 +94,10 @@ O objetivo desta prática é fazer jogo conhecido como *Tamagotchi* onde o jogad
   
 # Agiota - 05
 
-O objetivo desta prática é criar um programa que gerencie clientes de um agiota. Trabalho feito individualmente.
+O objetivo desta prática é criar um programa que gerencie clientes de um agiota. 
+
+- Com quem você fez?
+  - Trabalho feito individualmente.
 
 - Como foi feito: 
   - Foram criadas três classes, são elas: **Cliente, Movimentacao e Agiota**. Um agiota deve ser capaz de: possutir um capital cujo poderá emprestar, adicionar clientes, fazer emprestimos para clientes, receber pagamentos de clientes, e caso perder a paciencia com algum cliente devedor, mata-lo.
@@ -100,6 +112,20 @@ O objetivo desta prática é criar um programa que gerencie clientes de um agiot
   - Por volta de quatro horas.
 
 # Agiota com repositorios - 06
+
+# Serviço de anotações
+
+- Como foi feito:
+  - Essa prática tem o objetivo de criar um serviço de anotações, cujo são introduzidas anotações de título único (única chave) seguido de algum texto. Mas há um porém, para poder fazer a anotação o usuário deve estar logado no sistema, para tal, estudamos o conceito de como funciona um gerenciador de login capaz de permitir login e logout de um sistema.
+
+- O que você aprendeu?
+  - Como funciona um gerenciador de login com base em usuário e senha. 
+
+- O que você ainda tem dificuldade?
+  - Tive dificuldade para retornar um usuário que existe cadastrado no vector e para separar o gerenciador de login em uma classe especifica para tal função, visto que deixei o mesmo implementado na classe Controller juntamente ao shell(interpretador de comandos).
+
+- Quanto tempo levou para realizar a atividade?
+  - Algumas horas, creio que 3h.
 
 # Repositório I - 07
 
@@ -117,3 +143,9 @@ O objetivo dessa atividade é implementar um repositório por meio de **template
 
 - Quanto tempo levou para realizar a atividade?
   - Um total próximo a quatro horas.
+
+# Cálculo de salário
+
+# Trem
+
+# Banco - EXTRA
