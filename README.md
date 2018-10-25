@@ -112,6 +112,7 @@ O objetivo desta prática é criar um programa que gerencie clientes de um agiot
   - Por volta de quatro horas.
 
 # Agiota com repositorios - 06
+- Escrever
 
 # Serviço de anotações
 
@@ -145,7 +146,8 @@ O objetivo dessa atividade é implementar um repositório por meio de **template
   - Um total próximo a quatro horas.
 
 # Cálculo de salário
-
+  - Escrever
 # Trem
-
+- Escrever
 # Banco - EXTRA
+- Escrever
