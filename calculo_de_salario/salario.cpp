@@ -2,6 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <sstream>
+#include <map>
 using namespace std;
 
 class Funcionario{
@@ -15,6 +16,12 @@ public:
     }
 
     virtual float calcSalario() = 0;
+    //virtual float calcBonus() = 0;
+    //virtual void addDiaria() = 0;
+
+    /* void setBonus(float bonus){
+
+    } */
 };
 
 class Professor : public Funcionario{
@@ -47,6 +54,14 @@ public:
         }
         return value;
     }
+
+    /* void calcBonus(){
+        
+    } */
+
+    /* void addDiaria(){
+        
+    } */
 };
 
 class STA : public Funcionario{
@@ -63,6 +78,10 @@ public:
         salario = (3000 + (300*nivel));
         return salario;
     }
+
+    /* void addDiaria(){
+        
+    } */
 };
 
 class Terceirizado : public Funcionario{
@@ -83,6 +102,10 @@ public:
         salario = 4*horasTrab;
         return salario;
     }
+
+    /* void addDiaria(){
+        
+    } */
 };
 
 template<typename T>
@@ -147,14 +170,15 @@ public:
 
         if(classe == "help"){
             out << "addProf _nome _classe;\n"
-                << "addSTA _nome _classe;\n"
-                << "addTer _nome _horasTrab _salubridade;\n"
-                << "show _nome;\n"
-                << "rm _nome;\n"
-                << "addDiaria _nome;\n" 
-                << "setBonus _value;\n"
+                << "  " << "addSTA _nome _classe;\n"
+                << "  " << "addTer _nome _horasTrab _salubridade;\n"
+                << "  " << "show _nome;\n"
+                << "  " << "rm _nome;\n"
+                << "  " << "addDiaria _nome;\n" 
+                << "  " << "setBonus _value;\n"
                 << endl;
         }
+        return out.str();
     }
 
     void ui(){
