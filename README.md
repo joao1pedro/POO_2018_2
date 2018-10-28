@@ -116,6 +116,11 @@ O objetivo desta prática é criar um programa que gerencie clientes de um agiot
 
 # Serviço de anotações
 
+O Objetivo deste trabalho é proporcionar um sistema simples cuja permita login, logout, atualização de senha e escrever anotações dado um título e texto.
+
+- Com quem você fez?
+  - Trabalho feito individualmente.
+
 - Como foi feito:
   - Essa prática tem o objetivo de criar um serviço de anotações, cujo são introduzidas anotações de título único (única chave) seguido de algum texto. Mas há um porém, para poder fazer a anotação o usuário deve estar logado no sistema, para tal, estudamos o conceito de como funciona um gerenciador de login capaz de permitir login e logout de um sistema.
 
@@ -131,6 +136,9 @@ O objetivo desta prática é criar um programa que gerencie clientes de um agiot
 # Repositório I - 07
 
 O objetivo dessa atividade é implementar um repositório por meio de **templates** capaz de adicionar, remover, mostrar objetos das classes **professor, aluno, disciplinas**, de modo que, apenas a implementação de um métodos genéricos com base em respositórios permita essa implementação.
+
+- Com quem você fez?
+  - Trabalho feito individualmente.
 
 - Como foi feito:
   - Foram criadas classes **professor, aluno, disciplina** cuja cada uma era constituida apenas de seus respectivos métodos contrutores e toString.
@@ -150,4 +158,21 @@ O objetivo dessa atividade é implementar um repositório por meio de **template
 # Trem
 - Escrever
 # Banco - EXTRA
-- Escrever
+
+O objetivo desta prática é implementar um sistema que simula a conta de um único cliente, permitindo que este cliente faça operações de saque, deposito e extrato.
+
+- Com quem você fez?
+  - Trabalho feito individualmente.
+
+- Como foi feito?
+  - A conta era criada com um número digitado pelo usuario na abertura, com os valores de saldo/divida zerados(pelo construtor).
+  A classe Conta possui uma variavel chamada saldo cuja como já dito, inicia em 0. Uma operação de deposito faz com que o saldo receba o saldo anterior somado ao valor de deposito feito no momento e isso é colocado em um vector de Operações chamado extrato. Assim como, de modo semelhante, um saque modifica o valor de saldo subtraindo o valor digitado do saldo atual, isto se o valor do saque menor ou igual ao saldo total. Do mesmo modo, essa operação é adicionada ao vector extrato. Para mostrar o extrato deve-se passar por todos os valores do vector mostrando-lhe caso seja o extrato completo, e para passar por n ultimos elementos caso extratoN.
+
+- O que você aprendeu?
+  - Um pouco mais de como manipular um vector e que as impressões podem ser alteradas de acordo com um padrão desejado.
+
+- O que você ainda tem dificuldade?
+  - Tive dificuldade para encontrar o indice certo para fazer a operação de extorno.
+
+- Quanto tempo levou pra fazer a atividade?
+  - Entre 3h30 a 4 h.
