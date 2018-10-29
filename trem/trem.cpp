@@ -35,7 +35,7 @@ class Vagao{ //contratos
 public:
     virtual bool embarcar(Emb * emb) = 0;
     virtual ~Vagao(){};
-    //virtual bool desembar(string idPass) = 0;
+    virtual bool desembar(string idPass) = 0;
     //virtual bool exists(string idPass) = 0;
     virtual string toString() = 0;
 };
@@ -69,7 +69,17 @@ public:
         }
         return false;
     }
-    //virtual bool desembar(string idPass) = 0;
+    virtual bool desembar(string idPass){
+        int i = 0;
+        for(auto* pass: passageiros){
+            if(pass->getId() == idPass){
+                passageiros.erase(passageiros.begin() + i);
+                return true;
+            }
+            i++;
+        }
+        return false;
+    }
    // virtual bool exists(string idPass) = 0;
 
     virtual string toString(){
@@ -112,7 +122,15 @@ public:
         }
         return false;
     }
-//    desembar(idPass);
+    //desembar(idPass);
+    bool desembar(string idPass){
+        for(auto* vagao: vagoes){
+            if(vagao->desembar(idPass))
+                return true;
+        }
+        return false;
+    }
+
     string toString(){
         stringstream ss;
         ss << "Trem: ";
@@ -150,7 +168,13 @@ public:
                 delete pass;
         }else if(op == "show"){
             cout << trem.toString() << endl;
-        }else
+        }/* else if(op == "desemp"){
+            string id;
+            cin >> id;
+            if(trem.desembar(id)){
+                //
+            }
+        } */else
             cout << "fail: comando invalido" << endl;
     }
 
