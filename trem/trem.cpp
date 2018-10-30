@@ -168,13 +168,12 @@ public:
                 delete pass;
         }else if(op == "show"){
             cout << trem.toString() << endl;
-        }/* else if(op == "desemp"){
+        }else if(op == "desemp"){
             string id;
             cin >> id;
-            if(trem.desembar(id)){
-                //
-            }
-        } */else
+            if(!trem.desembar(id))
+                cout << (string)"fail: " + id + "nao existe" << endl;
+        }else
             cout << "fail: comando invalido" << endl;
     }
 
@@ -193,6 +192,7 @@ public:
 int main(){
     Controller cont;
     cont.exec();
+    return 0;
 }
 /*
 init 3
