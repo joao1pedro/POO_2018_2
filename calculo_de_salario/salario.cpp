@@ -17,10 +17,11 @@ public:
 
     virtual float calcSalario() = 0;
     //virtual float calcBonus() = 0;
-    //virtual void addDiaria() = 0;
+    virtual string toString() = 0;
+    virtual void addDiaria() = 0;
 
     /* void setBonus(float bonus){
-
+        this->bonus = bonus;
     } */
 };
 
@@ -28,12 +29,14 @@ class Professor : public Funcionario{
 public:
     char classe;
 
-    Professor(string nome, char classe){
+    Professor(string nome, char classe):
+    Funcionario(nome, 2)
+    {
         this->nome = nome;
         this->classe = classe;
     }
 
-    float calcSalario(char classe){
+    virtual float calcSalario(char classe){
         float value;
         if(classe == 'A'){
             value = 3000;
@@ -59,29 +62,39 @@ public:
         
     } */
 
-    /* void addDiaria(){
-        
-    } */
+    virtual void addDiaria(){
+        if(qtdDiarias > MaxDiarias){
+            throw "fail: limite de diarias atingido";
+        }
+        MaxDiarias -=1;
+        qtdDiarias +=1;
+    }
 };
 
 class STA : public Funcionario{
 public:
     int nivel;
 
-    STA(string nome, int nivel){
+    STA(string nome, int nivel):
+    Funcionario(nome, 1)
+    {
         this->nome = nome;
         this->nivel = nivel;
     }
 
-    float calcSalario(int nivel){
+    virtual float calcSalario(int nivel){
         float salario;
         salario = (3000 + (300*nivel));
         return salario;
     }
 
-    /* void addDiaria(){
-        
-    } */
+    virtual void addDiaria(){
+        if(qtdDiarias > MaxDiarias){
+            throw "fail: limite de diarias atingido";
+        }
+        MaxDiarias -=1;
+        qtdDiarias +=1;
+    }
 };
 
 class Terceirizado : public Funcionario{
@@ -89,13 +102,15 @@ public:
     int horasTrab;
     bool insalubre;
 
-    Terceirizado(string nome, int horasTrab, bool insalubre){
+    Terceirizado(string nome, int horasTrab, bool insalubre):
+    Funcionario(nome, 0)
+    {
         this->nome = nome;
         this->horasTrab = horasTrab;
         this->insalubre = insalubre;   
     }
 
-    float calcSalario(int horasTrab, bool insalubre){
+    virtual float calcSalario(int horasTrab, bool insalubre){
         float salario;
         if(insalubre)
             salario = ((4*horasTrab)+500);
@@ -103,9 +118,9 @@ public:
         return salario;
     }
 
-    /* void addDiaria(){
-        
-    } */
+    virtual void addDiaria(){
+        throw "fail: terceirizado nao pode receber diaria";
+    }
 };
 
 template<typename T>
@@ -151,24 +166,25 @@ struct Repositorio{
         return vp;
     }
 
-    string showAll(){
+    string show(){
         stringstream ss;
         for(auto it : data){
-            ss << "  " << it.second.toString() << endl;
+            ss << "  " << it.second->toString() << endl;
         }
         return ss.str();
     }
 };
 
 class Controller{
+    Repositorio <Funcionario*> rFunc;
 public:
     string shell(string line){
         stringstream ui(line);
         stringstream out;
-        string classe;
-        ui >> classe;
+        string op;
+        ui >> op;
 
-        if(classe == "help"){
+        if(op == "help"){
             out << "addProf _nome _classe;\n"
                 << "  " << "addSTA _nome _classe;\n"
                 << "  " << "addTer _nome _horasTrab _salubridade;\n"
@@ -177,6 +193,21 @@ public:
                 << "  " << "addDiaria _nome;\n" 
                 << "  " << "setBonus _value;\n"
                 << endl;
+        }else if(op == "addProf"){
+            string name;
+            char classe;
+            ui >> name >> classe;
+            rFunc.add(name, new Professor(name, classe));
+        }else if(op == "addSTA"){
+            string name;
+            int nivel;
+            ui >> name >> nivel;
+            //rFunc.add(name, new STA(name, nivel));
+        }
+        else if(op == "show"){
+            string nome;
+            ui >> nome;
+            cout << rFunc.show() << endl;
         }
         return out.str();
     }
@@ -190,14 +221,18 @@ public:
             if(line == "end")
                 break;
             //cout << line << endl;
+            try{ 
             cout << "  " << shell(line) << endl;
+            }catch(const char* e){
+                cout << e << endl;
+            }
         }
     }
 };
 
 int main()
 {
-    Controller c;
-    c.ui();
-    return 0;
+        Controller c;
+        c.ui();
+        return 0;
 }
