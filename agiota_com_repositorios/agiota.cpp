@@ -5,123 +5,6 @@
 #include <map>
 using namespace std;
 
-struct Cliente{
-    string keyID;
-    string id;
-    float saldo;
-    bool alive{true};
- 
-    Cliente(string keyID = "", string id = "", float saldo = 0):
-        keyID(keyID), id(id), saldo(saldo)
-    {
-    }
-
-    string toString(){
-        stringstream ss;
-        ss << this->keyID << ":" << this->id << ":" << this->saldo;
-        return ss.str();
-    }
-};
-
-struct Movimentacao{
-    int indice;
-    string key;
-    float value;
-    Movimentacao(string key = "", float value = 0):
-        key(key), value(value)
-    {
-    }
-
-    string toString(){
-        return "id:" + to_string(indice) + " [" + key + " " + to_string(value) + "]";
-    }
-};
-
-struct Agiota{
-    float saldoAmigo;
-    vector<Cliente> clientes;
-    vector<Movimentacao> mov;
-
-    Agiota(float saldoAmigo = 0):
-        saldoAmigo(saldoAmigo)
-    {
-    }
-
-    string toString(){
-        stringstream ss;
-        for(int i = 0; i < (int) clientes.size(); i++){
-            ss << clientes[i].toString() << endl;
-        }
-        return ss.str();
-    }
-
-    string saldoAmigoT(){
-        stringstream ss;
-        ss << "Saldo amigo: " << this->saldoAmigo;
-        return ss.str();
-    }
-
-     string toString_transferencias(){
-        stringstream ss;
-        for(int i = 0; i < (int) mov.size(); i++)
-            ss << "id: "<< i <<"[ "<< mov[i].key << " "<< mov[i].value <<" ]";
-        return ss.str();
-    }
-
-    string indiv_toString(string key){
-        stringstream ss;
-        for(int i = 0; i < (int) mov.size(); i++){
-            if( key == mov[i].key)
-                ss << "id:"<< i << " [ "<<mov[i].key << " " << mov[i].value <<" ]";
-        }
-        return ss.str();
-    }
-
-   void emprestimo(string key, float value){
-            if(value > saldoAmigo){
-            throw "fail: saldo do agiota eh insuficiente";
-        }
-        for(int i = 0; i < (int) clientes.size(); i++){
-            if(clientes[i].keyID == key){
-                clientes[i].saldo = clientes[i].saldo+value;
-                saldoAmigo = saldoAmigo-value;
-                mov.push_back(Movimentacao(key, value));
-            }
-        }
-        throw "fail: cliente nao existe";
-    }
-
-    void pay(string key, float value){
-        for(int i = 0; i < (int) clientes.size(); i++){
-            if(clientes[i].keyID == key){
-                if(value > clientes[i].saldo){
-                    throw "fail: pagamento maior que a divida nao eh aceitavel";
-                }
-                else{
-                    clientes[i].saldo = clientes[i].saldo+value;
-                    mov.push_back(Movimentacao(key, value));
-                    saldoAmigo = saldoAmigo+value;
-                }
-            }
-        }
-        throw "fail: devedor nao existe";
-    }
-
-    void kill(string key){
-        for(int i = 0; i < (int) clientes.size(); i++){
-            if(clientes[i].keyID == key){
-                clientes.erase(clientes.begin() + i);
-                for(int j = 0; j < (int) mov.size(); j++){
-                    if(mov[j].key == key)
-                        mov.erase(mov.begin() + j);
-                }
-                cout << "success: " << key << " foi morto";
-            }
-        }
-    }
-
-};
-
 template<typename T>
 struct Repositorio{
     map<string, T> data;
@@ -170,21 +53,141 @@ struct Repositorio{
         return vp;
     }
 
-    string showAll(){
+    string show(){
         stringstream ss;
         for(auto it : data){
             ss << "  " <<  it.second.toString() << endl;
         }
         return ss.str();
-}
-    
+    }
 };
 
+class Cliente{
+public:
+    string keyID;
+    string id;
+    float saldoDevedor;
+    bool alive{true};
+ 
+    Cliente(string keyID = "", string id = "", float saldoDevedor = 0):
+        keyID(keyID), id(id), saldoDevedor(saldoDevedor)
+    {
+    }
+
+    string toString(){
+        stringstream ss;
+        ss << keyID << ":" << id << ":" << saldoDevedor << endl;
+        return ss.str();
+    }
+
+    float getSaldo(){
+        return saldoDevedor;
+    }
+
+    void setSaldo(int value){
+        this->saldoDevedor = value;
+    }
+};
+
+class Transacao{
+public:
+    
+    string key;
+    float value;
+    int indice;
+
+    Transacao(string key = "", float value = 0, int indice = 0):
+        key(key), value(value), indice(indice)
+    {
+    }
+
+    string getName(){
+        return key;
+    }
+
+    float getValue(){
+        return value;
+    }
+
+    string toString(){
+        stringstream ss;
+        ss << "Ind: " << indice << "[ " << key << value << " ]";
+        return ss.str();
+    }
+};
+
+class Agiota{
+public:
+    Repositorio<Cliente> repCli;
+    Repositorio<Transacao> repTr;
+    float saldoAmigo;
+
+    Agiota(float saldoAmigo = 0):
+        saldoAmigo(saldoAmigo)
+    {
+    }
+
+    void setSaldoAmigo(float value){
+        this->saldoAmigo = value;
+    }
+
+    string saldoAmigoT(){
+        stringstream ss;
+        ss << "Saldo amigo: " << this->saldoAmigo;
+        return ss.str();
+    }
+
+    void addCli(string key, string name){
+        repCli.add(key, Cliente(key, name));
+    }
+
+    string showCli(string key){
+        float saldo;
+        stringstream ss;
+        for(auto& it : repTr.data){
+            auto transacao = it.second;
+            if(transacao.getName() == key)
+                ss << " " << transacao.toString() << endl;
+        }
+        auto cli = repCli.get(key);
+        saldo = cli.getSaldo();
+        ss << "  saldo: " << saldo;
+    
+        return ss.str();
+    }
+
+    void addTr(string key, float value){
+        if(this->saldoAmigo < value || this->saldoAmigo <= 0){
+            throw "fail: saldo insuficiente";
+        }
+        Cliente& cliente = repCli.get(key);
+        cliente.saldoDevedor += value;
+        setSaldoAmigo(this->saldoAmigo-value);
+        addTr(key, value);
+    }
+
+    void kill(string key){
+        repCli.rm(key);
+        for(auto it : repTr.data){
+            if(it.second.getName() == key)
+                repTr.rm(it.first);
+        }
+    }
+
+    void pay(string key, float value){
+        Cliente& cliente = repCli.get(key);
+        if(cliente.saldoDevedor < value)
+            throw "fail: nao posso receber mais do que emprestei";
+        cliente.saldoDevedor -= value;
+        setSaldoAmigo(this->saldoAmigo = this->saldoAmigo+value);
+        addTr(key, value);
+    }
+};
+
+
+
 struct Controller{
-    Cliente cliente;
     Agiota a;
-    Repositorio<Cliente> rcli;
-    Repositorio<Movimentacao> rmov;
     
     string shell(string line){
         stringstream ui(line);
@@ -197,9 +200,9 @@ struct Controller{
                     out << "showCli; showTr; show _cliChave; addCli _cliChave _nomeCliente; addTr _cliChave _value; kill _cliChave; consult;clear;";
                 }
                 else if(op == "showCli"){
-                    //for(auto& cli : rcli.getValues())
-                    //out << cli.toString();
-                    out << rcli.showAll();
+                    string key;
+                    ui >> key;
+                    out << a.showCli(key);
                 }
                 else if(op == "init"){
                     float value;
@@ -211,29 +214,27 @@ struct Controller{
                     string id, key;
                     ui >> key;
                     getline(ui, id);
-                    rcli.add(key, Cliente(key, id, 0));
+                    a.addCli(key, id);
                 }
                 else if(op == "addTr"){
                     string key;
                     float value;
                     ui >> key >> value;
                     
-                    rmov.add(key, Movimentacao(key, value));
+                    a.addTr(key, value);
                 }
                 else if(op == "showTr"){
                     string key;
                     ui >> key;
-                    out << rmov.showAll();
+                    out << a.repTr.show();
                 }
                 else if(op == "show"){
-                    string key;
-                    ui >> key;
-                    out << a.indiv_toString(key);
+                    out << a.repCli.show();
                 }
                 else if(op == "kill"){
                     string key;
                     ui >> key;
-                    rcli.rm(key);
+                    a.repCli.rm(key);
                 }
                 else if(op == "consult"){
                     out << a.saldoAmigoT();
