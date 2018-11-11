@@ -73,7 +73,27 @@ O objetivo desta prática é fazer um objeto contato telefonico, cuja, este poss
 - Quanto tempo levou para realizar a atividade?
   - De três a três horas e meia.
 
-# Pet - Tamagotchi - 04
+# Banco - EXTRA - 04
+
+O objetivo desta prática é implementar um sistema que simula a conta de um único cliente, permitindo que este cliente faça operações de saque, deposito e extrato.
+
+- Com quem você fez?
+  - Trabalho feito individualmente.
+
+- Como foi feito?
+  - A conta era criada com um número digitado pelo usuario na abertura, com os valores de saldo/divida zerados(pelo construtor).
+  A classe Conta possui uma variavel chamada saldo cuja como já dito, inicia em 0. Uma operação de deposito faz com que o saldo receba o saldo anterior somado ao valor de deposito feito no momento e isso é colocado em um vector de Operações chamado extrato. Assim como, de modo semelhante, um saque modifica o valor de saldo subtraindo o valor digitado do saldo atual, isto se o valor do saque menor ou igual ao saldo total. Do mesmo modo, essa operação é adicionada ao vector extrato. Para mostrar o extrato deve-se passar por todos os valores do vector mostrando-lhe caso seja o extrato completo, e para passar por n ultimos elementos caso extratoN.
+
+- O que você aprendeu?
+  - Um pouco mais de como manipular um vector e que as impressões podem ser alteradas de acordo com um padrão desejado.
+
+- O que você ainda tem dificuldade?
+  - Tive dificuldade para encontrar o indice certo para fazer a operação de extorno.
+
+- Quanto tempo levou pra fazer a atividade?
+  - Entre 3h30 a 4 h.
+
+# Pet - Tamagotchi - 05
 
 O objetivo desta prática é fazer jogo conhecido como *Tamagotchi* onde o jogador cuida de seu bichinho *(pet)*, brincando, banhando, dando comida e dando banho. Nosso **pet** deve possuir um nome, e seu nome deve ter uma opção de ser atualizado caso desejado.
 
@@ -92,7 +112,7 @@ O objetivo desta prática é fazer jogo conhecido como *Tamagotchi* onde o jogad
 - Quanto tempo levou para realizar a atividade?
   - Em torno de três horas.
   
-# Agiota - 05
+# Agiota - 06
 
 O objetivo desta prática é criar um programa que gerencie clientes de um agiota. 
 
@@ -111,29 +131,27 @@ O objetivo desta prática é criar um programa que gerencie clientes de um agiot
 - Quanto tempo levou para realizar a atividade?
   - Por volta de quatro horas.
 
-# Agiota com repositorios - 06
-- Escrever
-
-# Serviço de anotações
-
-O Objetivo deste trabalho é proporcionar um sistema simples cuja permita login, logout, atualização de senha e escrever anotações dado um título e texto.
+# Agiota com repositorios - 07
+- O objetivo deste trabalho é refazer a atividade 06(Agiota) utilizando conceitos de repositorios/mapas. Porém, nem todos os métodos funcionam como deveriam.
 
 - Com quem você fez?
   - Trabalho feito individualmente.
 
 - Como foi feito:
-  - Essa prática tem o objetivo de criar um serviço de anotações, cujo são introduzidas anotações de título único (única chave) seguido de algum texto. Mas há um porém, para poder fazer a anotação o usuário deve estar logado no sistema, para tal, estudamos o conceito de como funciona um gerenciador de login capaz de permitir login e logout de um sistema.
+  - Foi criado um repositorio de **coisas** permitidos atravez do uso de templates e mapas.
+  - Tal repositorio por trabalhar com "coisas" pode ser usado de acordo com a nossa necessidade, seja string, int, char etc.
+  - Então foram criados métodos add, rm, get, exist para trabalhar com os mapas de "coisas".
 
 - O que você aprendeu?
-  - Como funciona um gerenciador de login com base em usuário e senha. 
+  - A trabalhar um pouco com repositorios, mapas, templates.
 
 - O que você ainda tem dificuldade?
-  - Tive dificuldade para retornar um usuário que existe cadastrado no vector e para separar o gerenciador de login em uma classe especifica para tal função, visto que deixei o mesmo implementado na classe Controller juntamente ao shell(interpretador de comandos).
+  - A trabalhar com mapas, visto que, eu por vezes confundia um pouco o uso destes com os vectors, algo que fez com que eu tivesse muito trabalho, pois, a confusão fez com que eu tentasse reaproveitar o código da atividade anterior, alterando algumas coisas e isso acabou não sendo o melhor. Portanto, tive que assistir as aulas sobre mapas, templates novamente para prosseguir.
 
 - Quanto tempo levou para realizar a atividade?
-  - Algumas horas, creio que 3h.
+  - Julgo que por conta da confusão com vectors, umas 9 horas no total (incluindo revisão de video aulas).
 
-# Repositório I - 07
+# Repositório I - 08
 
 O objetivo dessa atividade é implementar um repositório por meio de **templates** capaz de adicionar, remover, mostrar objetos das classes **professor, aluno, disciplinas**, de modo que, apenas a implementação de um métodos genéricos com base em respositórios permita essa implementação.
 
@@ -153,26 +171,26 @@ O objetivo dessa atividade é implementar um repositório por meio de **template
 - Quanto tempo levou para realizar a atividade?
   - Um total próximo a quatro horas.
 
-# Cálculo de salário
-  - Escrever
-# Trem
-- Escrever
-# Banco - EXTRA
+# Serviço de anotações - 09
 
-O objetivo desta prática é implementar um sistema que simula a conta de um único cliente, permitindo que este cliente faça operações de saque, deposito e extrato.
+O Objetivo deste trabalho é proporcionar um sistema simples cuja permita login, logout, atualização de senha e escrever anotações dado um título e texto.
 
 - Com quem você fez?
   - Trabalho feito individualmente.
 
-- Como foi feito?
-  - A conta era criada com um número digitado pelo usuario na abertura, com os valores de saldo/divida zerados(pelo construtor).
-  A classe Conta possui uma variavel chamada saldo cuja como já dito, inicia em 0. Uma operação de deposito faz com que o saldo receba o saldo anterior somado ao valor de deposito feito no momento e isso é colocado em um vector de Operações chamado extrato. Assim como, de modo semelhante, um saque modifica o valor de saldo subtraindo o valor digitado do saldo atual, isto se o valor do saque menor ou igual ao saldo total. Do mesmo modo, essa operação é adicionada ao vector extrato. Para mostrar o extrato deve-se passar por todos os valores do vector mostrando-lhe caso seja o extrato completo, e para passar por n ultimos elementos caso extratoN.
+- Como foi feito:
+  - Essa prática tem o objetivo de criar um serviço de anotações, cujo são introduzidas anotações de título único (única chave) seguido de algum texto. Mas há um porém, para poder fazer a anotação o usuário deve estar logado no sistema, para tal, estudamos o conceito de como funciona um gerenciador de login capaz de permitir login e logout de um sistema.
 
 - O que você aprendeu?
-  - Um pouco mais de como manipular um vector e que as impressões podem ser alteradas de acordo com um padrão desejado.
+  - Como funciona um gerenciador de login com base em usuário e senha. 
 
 - O que você ainda tem dificuldade?
-  - Tive dificuldade para encontrar o indice certo para fazer a operação de extorno.
+  - Tive dificuldade para retornar um usuário que existe cadastrado no vector e para separar o gerenciador de login em uma classe especifica para tal função, visto que deixei o mesmo implementado na classe Controller juntamente ao shell(interpretador de comandos).
 
-- Quanto tempo levou pra fazer a atividade?
-  - Entre 3h30 a 4 h.
+- Quanto tempo levou para realizar a atividade?
+  - Algumas horas, creio que 3h.
+
+# Cálculo de salário - 10
+  - Escrever
+# Trem - 11
+- Escrever
