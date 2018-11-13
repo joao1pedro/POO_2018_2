@@ -1,4 +1,4 @@
-# 01 Carro -
+# Carro - 01
 
 O objetivo desta prática é criar uma Classe denominada **Carro** que funcione como um carro. Ou seja, **carro** deve permitir a entrada e/ou saída de passageiros, abastecer e por fim andar desde que haja combustível suficiente para completar a viagem e haja alguma pessoa dentro do carro.
 
@@ -27,7 +27,7 @@ O objetivo desta prática é criar uma Classe denominada **Carro** que funcione 
 
  - O tempo de desenvolvimento foi de aproximadamente 2 horas e meia.
 
- # Topic 02 - 
+ # Topic - 02
 
 O objetivo desta prática é simular a alocação de uma topic, cuja apresenta *n* cadeiras e *m* cadeiras preferenciais. De modo que quando algum passageiro entre na topic, se ele tiver idade de 60 anos ou mais ele é prioridade e portanto deve ser alocado em cadeiras preferenciais, essas cadeiras preferenciais são as cadeiras mais a frente do veiculo. Método de inserir passageiros foi refeito pois a versão anterior alocava os passageiros erroneamente.
 
