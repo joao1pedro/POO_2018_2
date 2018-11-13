@@ -77,6 +77,7 @@ public:
 
     virtual void addDiaria() = 0;
     virtual float calcSalario() = 0;
+    virtual float calcSalario(int nivel) = 0;
     virtual float setBonus(float bonus) = 0;
     virtual string getName() = 0;
     virtual string toString() = 0;
@@ -119,6 +120,10 @@ public:
         return (salario+this->diaria);
     }
 
+    virtual float calcSalario(int nivel){
+        return 0;
+    }
+
     virtual string getName(){
         return name;
     }
@@ -154,6 +159,10 @@ public:
             throw string("fail: limite de diarias atingido");
         maxDi -= 1;
         diaria += 1;
+    }
+
+    virtual float calcSalario(){
+        return 0;
     }
 
     virtual float calcSalario(int nivel){
@@ -207,6 +216,10 @@ public:
         return salario;
     }
 
+    virtual float calcSalario(int nivel){
+        return 0;
+    }
+
     virtual string getName(){
         return name;
     }
@@ -253,11 +266,11 @@ public:
             int horasTrab;
             ui >> key >> horasTrab >> check;
             rep.add(key, new Terceirizado(key, horasTrab, check));
-        }else if(op == "addSta"){
+        }else if(op == "addSTA"){
             string key;
             int nivel;
             ui >> key >> nivel;
-            //rep.add(key, new STA(key, nivel));
+            rep.add(key, new STA(key, nivel));
         }else if(op == "rm"){
             string key;
             ui >> key;
