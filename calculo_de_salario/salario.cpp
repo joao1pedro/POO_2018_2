@@ -1,85 +1,159 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
-#include <sstream>
 #include <map>
+#include <sstream>
+#include <algorithm>
+#include <vector>
+
 using namespace std;
 
-class Funcionario{
+template <typename T>
+class Respositorio{
+    map <string, T> data;
 public:
-    string nome;
-    int MaxDiarias, qtdDiarias;
-    float bonus;
-    Funcionario(string nome = "", int MaxDiarias = 0){
-        this->nome = nome;
-        this->MaxDiarias = MaxDiarias;
+    void add(string key, T t){
+        if(exists(key))
+            throw string("fail: " + key + " ja existe");
+        data[key] = t;
     }
 
-    virtual float calcSalario() = 0;
-    //virtual float calcBonus() = 0;
-    virtual string toString() = 0;
-    virtual void addDiaria() = 0;
+    void rm(string k){
+        auto it = data.find(k);
+        if(it == data.end())
+            throw string("fail: " + k + " nao existe");
+        data.erase(it);
+    }
 
-    /* void setBonus(float bonus){
+    T& get(string k){
+        auto it = data.find(k);
+        if(it == data.end())
+            throw string("fail: " + k + " nao existe");
+        return it->second;
+    }
+
+    bool exists(string k){
+        return data.count(k) != 0;
+    }
+
+    string getValues(string k){
+        if(!exists(k))
+            throw string("fail: " + k + " nao existe");
+        return data.find(k)->second->toString();
+    }
+
+    void addDiaria(string key){
+        if(exists(key)){
+            T funcionario = data.find(key)->second;
+            funcionario->addDiaria();
+        }
+    }
+
+    int qtdFunc(){
+        int tam;
+        tam = data.size();
+        return tam;
+    }
+
+     vector<string> getKeys(){
+        vector<string> vp;
+        for(auto& par: data)
+            vp.push_back(par.first);
+        return vp;
+    }
+};
+
+class Funcionario{
+protected:
+    string name;
+    string _type;
+    float bonus;
+    int maxDi;
+public:
+    Funcionario(string name = "", string _type = "", float bonus = 0.0, int maxDi = 0){
+        this->name = name;
+        this->_type = _type;
         this->bonus = bonus;
-    } */
+        this->maxDi = maxDi;
+    }
+
+    virtual void addDiaria() = 0;
+    virtual float calcSalario() = 0;
+    virtual float setBonus(float bonus) = 0;
+    virtual string getName() = 0;
+    virtual string toString() = 0;
 };
 
 class Professor : public Funcionario{
+private:
+    string classe;
+    int diaria;
 public:
-    char classe;
-
-    Professor(string nome, char classe):
-    Funcionario(nome, 2)
-    {
-        this->nome = nome;
+    Professor(string name = "", string classe = "", int diaria = 0):
+    Funcionario(name, "Professor", bonus, 2){
         this->classe = classe;
+        this->maxDi = maxDi;
+        this->diaria = diaria;
     }
-
-    virtual float calcSalario(char classe){
-        float value;
-        if(classe == 'A'){
-            value = 3000;
-        }
-        else if(classe == 'B'){
-            value = 5000;
-        }
-        else if(classe == 'C'){
-            value = 7000;
-        }
-        else if(classe == 'D'){
-            value = 9000;
-        }
-        else if(classe == 'E'){
-            value = 11000;
-        }else{
-            throw "classe invalida";
-        }
-        return value;
-    }
-
-    /* void calcBonus(){
-        
-    } */
 
     virtual void addDiaria(){
-        if(qtdDiarias > MaxDiarias){
-            throw "fail: limite de diarias atingido";
-        }
-        MaxDiarias -=1;
-        qtdDiarias +=1;
+        if(this->diaria > this->maxDi)
+            throw string("fail: limite de diarias atingido");
+        maxDi -= 1;
+        diaria +=1;
     }
+
+    //A 3000 B 5000 C 7000 D 9000 E 11000
+    virtual float calcSalario(){
+        float salario;
+        if(classe == "A"){
+            salario = 3000;
+        }else if(classe == "B"){
+            salario = 5000;
+        }else if(classe == "C"){
+            salario = 7000;
+        }else if(classe == "D"){
+            salario = 9000;
+        }
+        else if(classe == "E"){
+            salario = 11000;
+        }
+        return (salario+this->diaria);
+    }
+
+    virtual string getName(){
+        return name;
+    }
+
+    virtual float setBonus(float value){
+        this->bonus = value;
+        return bonus;
+    }
+
+    string toString(){
+        stringstream ss;
+        ss << "tipo: " <<_type << " nome: " << name
+        << " classe: " << classe<< " salario: " << to_string(calcSalario()) << endl;
+        return ss.str();
+    }
+
 };
 
 class STA : public Funcionario{
-public:
+private:
     int nivel;
-
-    STA(string nome, int nivel):
-    Funcionario(nome, 1)
-    {
-        this->nome = nome;
+    int diaria;
+public:
+    STA(string name = "", int nivel = 0, int diaria = 0):
+    Funcionario(name, "STA", bonus, 1){
         this->nivel = nivel;
+        this->maxDi = maxDi;
+        this->diaria = diaria;
+    }
+
+    virtual void addDiaria(){
+        if(this->diaria > this->maxDi)
+            throw string("fail: limite de diarias atingido");
+        maxDi -= 1;
+        diaria += 1;
     }
 
     virtual float calcSalario(int nivel){
@@ -88,151 +162,146 @@ public:
         return salario;
     }
 
-    virtual void addDiaria(){
-        if(qtdDiarias > MaxDiarias){
-            throw "fail: limite de diarias atingido";
-        }
-        MaxDiarias -=1;
-        qtdDiarias +=1;
+    virtual string getName(){
+        return name;
     }
+
+    virtual float setBonus(float value){
+        this->bonus = value;
+        return bonus;
+    }
+
+    string toString(){
+        stringstream ss;
+        ss << "tipo: " <<_type << " nome: " << name
+        << " nivel: " << nivel << " salario : " << to_string(calcSalario(nivel)) << endl;
+        return ss.str();
+    }
+
 };
 
 class Terceirizado : public Funcionario{
+private:
+    int horasT;
+    bool insalube;
 public:
-    int horasTrab;
-    bool insalubre;
-
-    Terceirizado(string nome, int horasTrab, bool insalubre):
-    Funcionario(nome, 0)
-    {
-        this->nome = nome;
-        this->horasTrab = horasTrab;
-        this->insalubre = insalubre;   
-    }
-
-    virtual float calcSalario(int horasTrab, bool insalubre){
-        float salario;
-        if(insalubre)
-            salario = ((4*horasTrab)+500);
-        salario = 4*horasTrab;
-        return salario;
+    Terceirizado(string name = "", int horasT = 0, string check = ""):
+    Funcionario(name, "Terceirizado", bonus , 0){
+        this->horasT = horasT;
+        if(check == "sim")
+            this->insalube = true;
+        else
+            this->insalube = false;
     }
 
     virtual void addDiaria(){
-        throw "fail: terceirizado nao pode receber diaria";
+        throw string("fail: Terceirizado nao recebe diaria");
     }
-};
 
-template<typename T>
-struct Repositorio{
-    map<string, T> data;
-
-    void add(string key, T elem){
-        if(!exists(key))
-            data[key] = elem;
+    virtual float calcSalario(){
+        float salario;
+        if(!insalube)
+            salario = (horasT*4);
         else
-            throw "fail: funcionario ja existe";
+            salario = (horasT*4 + 500);
+        return salario;
     }
 
-    bool exists(string key){
-        return data.find(key) != data.end();
+    virtual string getName(){
+        return name;
     }
 
-    string get(string key){
-        auto it = data.find(key);
-        if(it != data.end())
-            return it->second.toString();
-        else
-            throw "fail: funcionario nao existe";
+    virtual float setBonus(float value){
+        this->bonus = value;
+        return bonus;
     }
 
-    void rm(string key){
-        if(!exists(key))
-            throw "fail: funcionario nao existe";
-        data.erase(key);
-    }
-
-    vector<T> getValues(){
-        vector<T> vp;
-        for(auto& par : data)
-            vp.push_back(par.second);
-        return vp;
-    }
-
-    vector<string> getKeys(){
-        vector<string> vp;
-        for(auto& par : data)
-            vp.push_back(par.first);
-        return vp;
-    }
-
-    string show(){
+    string toString(){
         stringstream ss;
-        for(auto it : data){
-            ss << "  " << it.second->toString() << endl;
-        }
+        ss << "tipo: " <<_type << " nome: " << name
+        << " horas: " << horasT << " salario : " << to_string(calcSalario()) << endl;
         return ss.str();
     }
 };
 
 class Controller{
-    Repositorio <Funcionario*> rFunc;
+private:
+    Respositorio <Funcionario*> rep;
 public:
     string shell(string line){
         stringstream ui(line);
         stringstream out;
         string op;
         ui >> op;
-
         if(op == "help"){
-            out << "addProf _nome _classe;\n"
-                << "  " << "addSTA _nome _classe;\n"
-                << "  " << "addTer _nome _horasTrab _salubridade;\n"
-                << "  " << "show _nome;\n"
-                << "  " << "rm _nome;\n"
-                << "  " << "addDiaria _nome;\n" 
-                << "  " << "setBonus _value;\n"
-                << endl;
-        }else if(op == "addProf"){
-            string name;
-            char classe;
-            ui >> name >> classe;
-            rFunc.add(name, new Professor(name, classe));
-        }else if(op == "addSTA"){
-            string name;
-            int nivel;
-            ui >> name >> nivel;
-            //rFunc.add(name, new STA(name, nivel));
+            out << "addProf _nome _classe\n" 
+            << "addSTA _nome _nivel\n" 
+            << "addTer _nome _horasTrab _insalubre\n" 
+            << "addDiaria _nome\n"             
+            << "show _nome\n"
+            << "rm _nome\n"
+            << "clear\n"
+            << "end\n";
         }
-        else if(op == "show"){
-            string nome;
-            ui >> nome;
-            cout << rFunc.show() << endl;
+        else if(op == "addProf"){
+            string key, classe;
+            ui >> key >> classe;
+            rep.add(key, new Professor(key, classe));
+        }
+        else if(op == "addTer"){
+            string key, check;
+            int horasTrab;
+            ui >> key >> horasTrab >> check;
+            rep.add(key, new Terceirizado(key, horasTrab, check));
+        }else if(op == "addSta"){
+            string key;
+            int nivel;
+            ui >> key >> nivel;
+            //rep.add(key, new STA(key, nivel));
+        }else if(op == "rm"){
+            string key;
+            ui >> key;
+            rep.rm(key);
+        }else if(op == "show"){
+            string key;
+            ui >> key;
+            cout << rep.getValues(key);
+        }else if(op == "addDiaria"){
+            string key;
+            ui >> key;
+            rep.addDiaria(key);
+        }else if(op == "clear"){
+            system("clear");
+        }
+        /* else if(op == "addBonus"){
+            float value;
+            ui >> value;
+            rep.addBonus(value);
+        } */
+        else{
+            out << "fail: comando invalido\n";
         }
         return out.str();
     }
 
     void ui(){
         string line;
-        stringstream ss;
-
         while(true){
             getline(cin, line);
             if(line == "end")
                 break;
-            //cout << line << endl;
-            try{ 
-            cout << "  " << shell(line) << endl;
-            }catch(const char* e){
+            try{
+                cout << shell(line);
+            }catch(string e){
                 cout << e << endl;
             }
         }
     }
 };
 
-int main()
-{
-        Controller c;
-        c.ui();
-        return 0;
+
+int main(){
+    Controller c;
+    c.ui();
+    return 0;
 }
