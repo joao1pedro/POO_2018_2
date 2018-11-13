@@ -191,6 +191,24 @@ O Objetivo deste trabalho é proporcionar um sistema simples cuja permita login,
   - Algumas horas, creio que 3h.
 
 # Cálculo de salário - 10
-  - Escrever
+O objetivo deste exercicio é fazer um sistema capaz de cadastrar funcionarios que podem ter as seguintes classes: "Professor, STA e terceirizado". Os funcionarios possuem um nome **key** que é um identificador único. Ao serem cadastrados os funcionarios tem seu salário calculado de acordo com os atributos necessários para tal, podendo ter diárias especificas para cada funcionário.
+
+- Com quem você fez?
+  - Trabalho feito individualmente.
+
+- Como foi feito:
+  - Foi necessário a utilização de repositórios (templates) para cadastrar os funcionários e seus respectivos tipos.
+  - Foi utilizado o conceito de herança, polimorfismo e métodos abstratos(virtuais) para tratar da classe mãe **Funcionario** e suas respectivas filhas **Professor, STA, Terceirizado**.
+
+
+- O que você aprendeu?
+  - A utilizar conceitos de herança, polimorfismo e classes abstratas.
+
+- O que você ainda tem dificuldade?
+  - Tive dificuldades para fazer o método responsável por atribuir bonus a todos os funcionários, visto que, não consegui encontrar uma forma de passar por todos os funcionários do repositório sem acessa-los pela **key**(identificador unico) de cada um. Mesmo sabendo o tanto de funcionários que tinham no repositorio a partir da função size().
+
+- Quanto tempo levou para realizar a atividade?
+  - Entre 6 a 7 horas em dias alternados.
+
 # Trem - 11
 - Escrever
