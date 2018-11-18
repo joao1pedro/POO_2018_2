@@ -212,3 +212,9 @@ O objetivo deste exercicio é fazer um sistema capaz de cadastrar funcionarios q
 
 # Trem - 11
 - Escrever
+
+# Consultório médico (Época de matricula) - 12
+- Escrever
+
+# Twitter - 13
+- Escrever
