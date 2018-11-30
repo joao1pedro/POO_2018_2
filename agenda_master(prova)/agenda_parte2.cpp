@@ -150,6 +150,7 @@ public:
 class Note : public Entry { 
     string id;
     vector<string> itens;
+    bool favorited{false};
 public:
     Note(string id = "")
         :id(id)
@@ -166,19 +167,24 @@ public:
     }
 
     string toString(){
-        string saida = toString() + " N [ ";
-        for(auto item : itens){
-            saida += item + " ";
-        }
+        string saida;
+        if(favorited)
+            saida = " @ ";
+        else
+            saida = " - ";
+        saida += " N ";
+        int i = 0;
+        for(auto item : itens)
+            saida += "[" + to_string(i++) + ":" + item + " ";
         return saida + "]";
     }
 
     bool isFavorited(){
-        return false;
+        return favorited;
     }
 
     void setFavorited(bool value){
-        return;
+        this->favorited = value;
     }
 };
 
@@ -190,12 +196,14 @@ public:
     Contato * getContato(string id){
         if(Contato* cont = dynamic_cast <Contato*>(getEntry(id)))
             return cont;
-        return nullptr;
+        else
+            throw string("fail: contato nao existe");
     }
     Note * getNote(string id){
         if(Note* note = dynamic_cast <Note*>(getEntry(id)))
             return note;
-        return nullptr;
+        else
+            throw string("fail: nota nao existe");
     }
 }; 
 
