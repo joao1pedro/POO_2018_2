@@ -142,14 +142,6 @@ public:
         return false;
     }
 
-    /* string showFav(){
-        stringstream ss;
-        for(auto contato : contatos){
-            if(contato.second.getFavoritos() == true)
-                ss << "@" << contato.second.toString() << endl;
-        }
-        return ss.str();
-    } */
 };
 
 class Controller {
