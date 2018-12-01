@@ -218,7 +218,7 @@ Objetivo é simular um consultório médico de modo que pacientes conheçam seus
 
 - Com quem você fez?
   - Atividade feita individualmente.
-  
+
 - O que você aprendeu?
   - Fixei conceitos de repositorios, e aprendi um pouco sobre agregação, costura(tie) e descostura(untie).
 
@@ -253,11 +253,15 @@ Objetivo é fazer uma aplicação que funcione como um twitter, onde há a capac
 Objetivo é implementar uma agenda cuja permita inserção de favoritos e além de contatos, guarde anotações. **Após o professor olhar o andamento das atividades na aula, seguindo algumas dicas consegui concertar um erro de segmentation fault que acontecia quando eu pedia para mostrar a agenda após inserir uma nota, portanto, todos requisitos cumpridos.**
 - Com quem você fez?
   - Trabalho feito individualmente.
+
 - Como foi feito:
   - Fiz algumas modificações a partir do código que o professor disponibilizou no arquivo .md da atividade.
+
 - O que você aprendeu?
   - Fixei conceitos de herança, mapas, e ponteiros.
+
 - O que você ainda tem dificuldade?
   - Inicialmente tive dificuldades a trabalhar com mapas e ponteiros, mas consegui dar rumo ao trabalho após realizar algumas pesquisas no **StackOverflow e cplusplus**.
+  
 - Quanto tempo levou para realizar a atividade?
   - Na faixa de 8 a 9 horas.
