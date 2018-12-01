@@ -232,9 +232,9 @@ Objetivo é simular um consultório médico de modo que pacientes conheçam seus
   - Em torno de 8 horas.
 
 # Twitter - 13
-Objetivo é fazer uma aplicação que funcione como um twitter, onde há a capacidade de adicionar usuários, usuarios se seguirem, darem like em tweets, tweetar e mostrar a timeline de cada usuario.
+Objetivo é fazer uma aplicação que funcione como um twitter, onde há a capacidade de adicionar usuários, usuarios se seguirem, darem like em tweets, tweetar e mostrar a timeline de cada usuario. Todos os requisitos foram cumpridos.
 
-- Com quer você fez?
+- Com quem você fez?
   - Atividade feita individualmente.
 
 - O que você aprendeu?
@@ -262,6 +262,6 @@ Objetivo é implementar uma agenda cuja permita inserção de favoritos e além 
 
 - O que você ainda tem dificuldade?
   - Inicialmente tive dificuldades a trabalhar com mapas e ponteiros, mas consegui dar rumo ao trabalho após realizar algumas pesquisas no **StackOverflow e cplusplus**.
-  
+
 - Quanto tempo levou para realizar a atividade?
   - Na faixa de 8 a 9 horas.
