@@ -214,7 +214,18 @@ O objetivo deste exercicio é fazer um sistema capaz de cadastrar funcionarios q
 - Escrever
 
 # Consultório médico (Época de matricula) - 12
-- Escrever
+Objetivo é simular um consultório médico de modo que pacientes conheçam seus médicos, sejam capazes de adicionar novos médicos(de especialidades diferentes e remove-los), assim como médicos conhecem seus pacientes e devem remove-los quando alguém deixar de ser seu paciente.
+
+- Com quem você fez?
+  - Atividade feita individualmente.
+- O que você aprendeu?
+  - Fixei conceitos de repositorios, e aprendi um pouco sobre agregação, costura(tie) e descostura(untie).
+- Como foi feito:
+  - Foram criados repositorios de doutores e pacientes e através de agregação podia costurar médicos a pacientes.
+- O que você ainda tem dificuldade?
+  - Tive dificuldades em entender a costura e descostura por ser algo novo apesar de interessante.
+- Quanto tempo levou para realizar a atividade?
+  - Em torno de 8 horas.
 
 # Twitter - 13
 - Escrever
