@@ -218,17 +218,36 @@ Objetivo é simular um consultório médico de modo que pacientes conheçam seus
 
 - Com quem você fez?
   - Atividade feita individualmente.
+  
 - O que você aprendeu?
   - Fixei conceitos de repositorios, e aprendi um pouco sobre agregação, costura(tie) e descostura(untie).
+
 - Como foi feito:
   - Foram criados repositorios de doutores e pacientes e através de agregação podia costurar médicos a pacientes.
+
 - O que você ainda tem dificuldade?
   - Tive dificuldades em entender a costura e descostura por ser algo novo apesar de interessante.
+
 - Quanto tempo levou para realizar a atividade?
   - Em torno de 8 horas.
 
 # Twitter - 13
-- Escrever
+Objetivo é fazer uma aplicação que funcione como um twitter, onde há a capacidade de adicionar usuários, usuarios se seguirem, darem like em tweets, tweetar e mostrar a timeline de cada usuario.
+
+- Com quer você fez?
+  - Atividade feita individualmente.
+
+- O que você aprendeu?
+  - Pratiquei conceitos de repositorios, vectors com ponteiros, e a aplicação de uma classe que gerencia a criação de tweets para um repositorio de tweets.
+
+- Como foi teito:
+  - Foram criados repositorios de tweets e usuarios onde usuários tem seus seguidores e seguidos, timeline, e seus próprios tweets e tweets podem ter likes.
+
+- O que você ainda tem dificuldade?
+  - Tive dificuldades em realizar toda a "costura" entre seguidores e seguidos, mas encontrei auxilio no StackOverflow e cplusplus.
+
+- Quanto tempo levou para realizar a atividade?
+  - Por volta de umas 9 horas.
 
 # Agenda Master (Prova) - 14
 Objetivo é implementar uma agenda cuja permita inserção de favoritos e além de contatos, guarde anotações. **Após o professor olhar o andamento das atividades na aula, seguindo algumas dicas consegui concertar um erro de segmentation fault que acontecia quando eu pedia para mostrar a agenda após inserir uma nota, portanto, todos requisitos cumpridos.**
