@@ -211,7 +211,22 @@ O objetivo deste exercicio é fazer um sistema capaz de cadastrar funcionarios q
   - Entre 6 a 7 horas em dias alternados.
 
 # Trem - 11
-- Escrever
+Objetivo é criar um "trem" capaz de adicionar vagões, sendo vagões de carga ou passageiros. Adicionar passageiros, adicionar cargas, remover passageiros e remover cargas.
+
+- Com quem você fez?
+  - Trabalho feito individualmente.
+
+- Como foi feito:
+  - O professor disponibilizou o código cujo tinhamos que dar continuidade em casa, com enfase na função de desembarcar passageiros, pois embarcar já estava implementado para passageiros. E após isso, fazer o mesmo para cargas.
+
+- O que você aprendeu?
+  - Conceitos de herança e polimorfismo.
+
+- O que você ainda tem dificuldade?
+  - Essa atividade na época em que foi passada me deixou bastante confuso devido as novidades que eram herança e polimorfismo. Portanto, ela foi entregue após o prazo estipulado para tal.
+
+- Quanto tempo levou para realizar a atividade?
+ - Devido as dificuldades que tive de inicio, creio que de 11 a 12 horas no total.
 
 # Consultório médico (Época de matricula) - 12
 Objetivo é simular um consultório médico de modo que pacientes conheçam seus médicos, sejam capazes de adicionar novos médicos(de especialidades diferentes e remove-los), assim como médicos conhecem seus pacientes e devem remove-los quando alguém deixar de ser seu paciente.
