@@ -247,22 +247,7 @@ Objetivo é simular um consultório médico de modo que pacientes conheçam seus
   - Em torno de 8 horas.
 
 # Twitter - 13
-Objetivo é fazer uma aplicação que funcione como um twitter, onde há a capacidade de adicionar usuários, usuarios se seguirem, darem like em tweets, tweetar e mostrar a timeline de cada usuario. Todos os requisitos foram cumpridos.
-
-- Com quem você fez?
-  - Atividade feita individualmente.
-
-- O que você aprendeu?
-  - Pratiquei conceitos de repositorios, vectors com ponteiros, e a aplicação de uma classe que gerencia a criação de tweets para um repositorio de tweets.
-
-- Como foi teito:
-  - Foram criados repositorios de tweets e usuarios onde usuários tem seus seguidores e seguidos, timeline, e seus próprios tweets e tweets podem ter likes.
-
-- O que você ainda tem dificuldade?
-  - Tive dificuldades em realizar toda a "costura" entre seguidores e seguidos, mas encontrei auxilio no StackOverflow e cplusplus.
-
-- Quanto tempo levou para realizar a atividade?
-  - Por volta de umas 9 horas.
+Objetivo é fazer uma aplicação que funcione como um twitter, onde há a capacidade de adicionar usuários, usuarios se seguirem, darem like em tweets, tweetar e mostrar a timeline de cada usuario.
 
 # Agenda Master (Prova) - 14
 Objetivo é implementar uma agenda cuja permita inserção de favoritos e além de contatos, guarde anotações. **Após o professor olhar o andamento das atividades na aula, seguindo algumas dicas consegui concertar um erro de segmentation fault que acontecia quando eu pedia para mostrar a agenda após inserir uma nota, portanto, todos requisitos cumpridos.**
