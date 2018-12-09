@@ -127,7 +127,7 @@ public:
     bool addFav(string name){
         if(contatos.find(name) != contatos.end()){
                 contatos.at(name).setFavoritos(true);
-                //fav.insert(make_pair(name, &contatos.at(name)));
+                fav.insert(make_pair(name, &contatos.at(name)));
             return true;
         }
         return false;
@@ -136,7 +136,7 @@ public:
     bool rmFav(string name){
         if(contatos.find(name) != contatos.end()){
             contatos.at(name).setFavoritos(false);
-            //fav.erase(name);
+            fav.erase(name);
             return true;
         }
         return false;
@@ -145,7 +145,6 @@ public:
 };
 
 class Controller {
-
     Agenda agenda;
 public:
 
@@ -204,9 +203,21 @@ public:
             else
                 cout << "fail : contato nao existe\n";
         }
-        /* else if(op == "showFav"){
-            agenda.showFav();
-        } */
+        else if(op == "atualizar"){
+            string name, id_number, aux;
+            ss >> name;
+            aux = name;
+            agenda.rmContato(name);
+            Contato cont(aux);
+            while(ss >> id_number){
+                string id, fone;
+                stringstream ssfone(id_number);
+                getline(ssfone, id, ':');
+                ssfone >> fone;
+                cont.addFone(Fone(id, fone));
+            }
+            agenda.addContato(cont);
+        }
         else
             cout << "comando invalido" << endl;
     }
