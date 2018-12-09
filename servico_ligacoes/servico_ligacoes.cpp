@@ -26,9 +26,17 @@ class Contato{
     string idCont;
     vector <Fone> telefones;
     bool favorito{false};
+    int ligacoes;
 public:
-    Contato(string idCont = ""){
+    Contato(string idCont = "", int ligacoes = 0){
         this->idCont = idCont;
+        this->ligacoes = ligacoes;
+    }
+    int getLigacoes(){
+        return this->ligacoes;
+    }
+    void setLigacoes(){
+        this->ligacoes = ligacoes+1;
     }
     string getId(){
         return idCont;
@@ -64,7 +72,7 @@ public:
         saida += this->idCont + " C ";
         int i = 0;
         for(auto fone : getFones())
-            saida += "[" + to_string(i++) + ":" + fone.id + ":" + fone.numero + "]";
+            saida += "{ ligacoes " + to_string(getLigacoes()) + "}" + "[" + to_string(i++) + ":" + fone.id + ":" + fone.numero + "]";
         return saida;
     }
 };
@@ -134,7 +142,7 @@ public:
         if(contatos.find(id) != contatos.end())
             historico.insert(make_pair(id, &contatos.at(id)));
         else
-            throw string("fail");
+            throw string("fail: " + id + " nao existe nos contatos");
     }
     vector<Contato*> getHistorico(){
         vector<Contato*> hist;
@@ -143,8 +151,15 @@ public:
         }
         return hist;
     }
+    bool exists(string k){
+        return contatos.count(k) != 0;
+    }
+    void incrementarLigacao(string k){
+        if(exists(k)){
+            contatos.at(k).setLigacoes();
+        }
+    }
 };
-
 class Controller {
     Agenda agenda;
 public:
@@ -153,7 +168,22 @@ public:
         string op;
         ss >> op;
 
-        if(op == "addContato"){
+        if(op == "help"){
+            cout << "addContato nome numero" << endl
+                << "rmFone id" << endl
+                << "rmContato nome" << endl
+                << "agenda" << endl
+                << "search palavra" << endl
+                << "fav nome" << endl
+                << "desfav nome" << endl
+                << "update nome numero" << endl
+                << "showFavoritos" << endl
+                << "historico" << endl
+                << "ligar nome" << endl
+                << "speedlist" << endl
+                << "clean" << endl;
+        }
+        else if(op == "addContato"){
             string name, id_number;
             ss >> name;
             Contato cont(name);
@@ -225,10 +255,14 @@ public:
             string nmb;
             ss >> nmb;
             agenda.addHistorico(nmb);
+            agenda.incrementarLigacao(nmb);
         }
         else if(op == "historico"){
             for(auto elem : agenda.getHistorico())
                 cout << elem->toString() << endl;
+        }
+        else if(op == "clean"){
+            system("clear");
         }
         else
             cout << "comando invalido" << endl;
