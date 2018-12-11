@@ -1,5 +1,5 @@
 CPPFLAGS = -Wall -std=c++14 -g -Werror
 all:
-	g++ *.cpp $(CPPFLAGS) -o ligacoes
+	g++ main.cpp $(CPPFLAGS) -o servicos_ligacoes
 clean:
-	rf -R ligacoes
+	rm -R servicos_ligacoes
