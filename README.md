@@ -265,3 +265,18 @@ Objetivo é implementar uma agenda cuja permita inserção de favoritos e além 
 
 - Quanto tempo levou para realizar a atividade?
   - Na faixa de 8 a 9 horas.
+
+# Serviços de Ligações  - 15
+Objetivo é criar uma agenda de contatos onde é possivel adicionar contatos, remover contatos, favoritar contatos, desfavoritar contatos, atualizar contatos, ligar para contatos, mostrar todos os contatos, mostrar historico de ligações, mostrar o número cujo tem mais ligações(speedlist), mostrar somente favoritos, procurar por um padrão nos contatos P.e: (contatos que possuam telefone "oi").
+
+- Com quem você fez?
+  - Individualmente.
+
+- O que você aprendeu?
+  - A trabalhar mais com maps, unordened maps e iteradores.
+
+- O que você ainda tem dificuldade?
+  - Tive um pouco de dificuldade a trabalhar com iteradores para modificar alguns atributos dos objetos. Porém realizei pesquisar no StackOverflow, cplusplus e thispointer cuja me ajudaram a resolver minhas duvidas.
+
+- Quanto tempo levou para realizar a atividade?
+  - De 6 a 7 horas.
