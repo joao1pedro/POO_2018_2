@@ -273,7 +273,7 @@ Objetivo é criar uma agenda de contatos onde é possivel adicionar contatos, re
   - Individualmente.
 
 - O que você aprendeu?
-  - A trabalhar mais com maps, unordened maps e iteradores.
+  - A trabalhar mais com maps, unordened maps e iteradores. Com destaque ao unordened map cujo utilizei para guardar o historico de ligações, que trata-se de um map que não ordena os elementos pela chave, por isso o nome unordened map (mapa não ordenado).
 
 - O que você ainda tem dificuldade?
   - Tive um pouco de dificuldade a trabalhar com iteradores para modificar alguns atributos dos objetos. Porém realizei pesquisar no StackOverflow, cplusplus e thispointer cuja me ajudaram a resolver minhas duvidas.
