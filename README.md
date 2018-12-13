@@ -5,7 +5,7 @@ Objetivo é criar uma agenda de contatos onde é possivel adicionar contatos, re
   - Individualmente.
 
 - Como foi feito?
-  - Todos os requisitos foram cumpridos porém a saída esperada para algumas funções não é 100% identica ao mostrado no exemplo do site. Por exemplo a speedlist mostra apenas o número cujo tem mais ligações. Para atualizar o contato eu verifico se o contato existe, se ele existir eu excluo ele e insiro novamente como um novo contato. Histórico eu adiciono elementos em um mapa não ordenado (unordened_map) e tomo os devidos cuidados para que ele realmente se comporte como um histórico. Para ligar eu atualizo a variavel de ligações de cada contato incrementando ligacoes+1 e adiciono o contato no histórico.
+  - Todos os requisitos foram cumpridos porém a saída esperada para algumas funções não é 100% identica ao mostrado no exemplo do site. Por exemplo a speedlist mostra apenas o contato que possui mais ligações. Para atualizar o contato eu verifico se o contato existe, se ele existir eu excluo ele e insiro novamente como um novo contato. Histórico eu adiciono elementos em um mapa não ordenado (unordened_map) e tomo os devidos cuidados para que ele realmente se comporte como um histórico. Para ligar eu atualizo a variavel de ligações de cada contato incrementando ligacoes+1 e adiciono o contato no histórico.
 
 - O que você aprendeu?
   - A trabalhar mais com maps, unordened maps e iteradores. Com destaque ao unordened map cujo utilizei para guardar o historico de ligações, que trata-se de um map que não ordena os elementos pela chave, por isso o nome unordened map (mapa não ordenado).
