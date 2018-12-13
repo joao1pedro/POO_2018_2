@@ -1,3 +1,22 @@
+# Serviços de Ligações  - 15
+Objetivo é criar uma agenda de contatos onde é possivel adicionar contatos, remover contatos, favoritar contatos, desfavoritar contatos, atualizar contatos, ligar para contatos, mostrar todos os contatos, mostrar historico de ligações, mostrar o número cujo tem mais ligações(speedlist), mostrar somente favoritos, procurar por um padrão nos contatos P.e: (contatos que possuam telefone "oi").
+
+- Com quem você fez?
+  - Individualmente.
+
+- Como foi feito?
+  - Todos os requisitos foram cumpridos porém a saída esperada para algumas funções não é 100% identica ao mostrado no exemplo do site. Por exemplo a speedlist mostra apenas o número cujo tem mais ligações. Para atualizar o contato eu verifico se o contato existe, se ele existir eu excluo ele e insiro novamente como um novo contato. Histórico eu adiciono elementos em um mapa não ordenado (unordened_map) e tomo os devidos cuidados para que ele realmente se comporte como um histórico. Para ligar eu atualizo a variavel de ligações de cada contato incrementando ligacoes+1 e adiciono o contato no histórico.
+
+- O que você aprendeu?
+  - A trabalhar mais com maps, unordened maps e iteradores. Com destaque ao unordened map cujo utilizei para guardar o historico de ligações, que trata-se de um map que não ordena os elementos pela chave, por isso o nome unordened map (mapa não ordenado).
+
+- O que você ainda tem dificuldade?
+  - Tive um pouco de dificuldade a trabalhar com iteradores para modificar alguns atributos dos objetos. Porém realizei pesquisar no StackOverflow, cplusplus e thispointer cuja me ajudaram a resolver minhas duvidas.
+
+- Quanto tempo levou para realizar a atividade?
+  - De 6 a 7 horas.
+
+
 # Carro - 01
 
 O objetivo desta prática é criar uma Classe denominada **Carro** que funcione como um carro. Ou seja, **carro** deve permitir a entrada e/ou saída de passageiros, abastecer e por fim andar desde que haja combustível suficiente para completar a viagem e haja alguma pessoa dentro do carro.
@@ -265,18 +284,3 @@ Objetivo é implementar uma agenda cuja permita inserção de favoritos e além 
 
 - Quanto tempo levou para realizar a atividade?
   - Na faixa de 8 a 9 horas.
-
-# Serviços de Ligações  - 15
-Objetivo é criar uma agenda de contatos onde é possivel adicionar contatos, remover contatos, favoritar contatos, desfavoritar contatos, atualizar contatos, ligar para contatos, mostrar todos os contatos, mostrar historico de ligações, mostrar o número cujo tem mais ligações(speedlist), mostrar somente favoritos, procurar por um padrão nos contatos P.e: (contatos que possuam telefone "oi").
-
-- Com quem você fez?
-  - Individualmente.
-
-- O que você aprendeu?
-  - A trabalhar mais com maps, unordened maps e iteradores. Com destaque ao unordened map cujo utilizei para guardar o historico de ligações, que trata-se de um map que não ordena os elementos pela chave, por isso o nome unordened map (mapa não ordenado).
-
-- O que você ainda tem dificuldade?
-  - Tive um pouco de dificuldade a trabalhar com iteradores para modificar alguns atributos dos objetos. Porém realizei pesquisar no StackOverflow, cplusplus e thispointer cuja me ajudaram a resolver minhas duvidas.
-
-- Quanto tempo levou para realizar a atividade?
-  - De 6 a 7 horas.
